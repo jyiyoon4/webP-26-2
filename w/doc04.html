@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      ol li {
+        list-style-type: lower-alpha;
+      }
+      ol {
+        list-style-position: inside;
+      }
+      ul {
+        list-style-position: outside;
+      }
+      li.kr {
+        list-style-type: square;
+      }
+      li.usa {
+        list-style-image: circle;
+      }
+    </style>
+  </head>
+  <body>
+    <p>순서 없</p>
+    <ul>
+      <li>1번</li>
+      <li>2번</li>
+      <li>3번</li>
+    </ul>
+    <ol>
+      <p>순서 있</p>
+      <li>1번</li>
+      <li>2번</li>
+      <li>3번</li>
+    </ol>
+
+    <p>o.o</p>
+    <table border="1">
+      <caption>
+        과목별 추천도서
+      </caption>
+
+      <tr>
+        <th>과목</th>
+        <th>책제목</th>
+        <th>저자</th>
+        <th>출판사</th>
+      </tr>
+
+      <tr>
+        <td rowspan="2">웹프로그래밍</td>
+        <td>HTML5</td>
+        <td>임순범</td>
+        <td>생능</td>
+      </tr>
+
+      <tr>
+        <td>소셜미디어 시대의 인터넷 활용</td>
+        <td>최윤철, 임순범</td>
+        <td>생능</td>
+      </tr>
+
+      <tr>
+        <td>What Is HTML5?</td>
+        <td>B. McLaughlin</td>
+        <td>O'Reilly</td>
+      </tr>
+
+      <tr>
+        <th>합계</th>
+        <td colspan="3">3권</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,1566 @@
+<!doctype html>
+<html lang="en" style="">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'on-primary': '#ffffff',
+              'on-background': '#1a1c1c',
+              'on-secondary-fixed-variant': '#464749',
+              'on-primary-container': '#858383',
+              'primary-fixed': '#e5e2e1',
+              'surface-pure': '#FFFFFF',
+              'ink-muted': '#767676',
+              'inverse-on-surface': '#f1f1f1',
+              'ink-secondary': '#1C1D1F',
+              'on-secondary-container': '#626265',
+              'on-surface': '#1a1c1c',
+              'secondary-fixed': '#e3e2e4',
+              surface: '#f9f9f9',
+              'surface-dim': '#dadada',
+              'on-tertiary-fixed': '#1d1b1a',
+              'on-tertiary': '#ffffff',
+              background: '#f9f9f9',
+              'surface-container-lowest': '#ffffff',
+              error: '#ba1a1a',
+              'primary-container': '#1c1b1b',
+              'error-container': '#ffdad6',
+              'surface-variant': '#e2e2e2',
+              outline: '#747878',
+              secondary: '#5e5e60',
+              primary: '#000000',
+              'ink-primary': '#111111',
+              'tertiary-container': '#1d1b1a',
+              'on-error': '#ffffff',
+              'surface-container-low': '#f3f3f3',
+              'on-tertiary-fixed-variant': '#484645',
+              'inverse-surface': '#2f3131',
+              'primary-fixed-dim': '#c8c6c5',
+              tertiary: '#000000',
+              'on-surface-variant': '#444748',
+              'surface-container-high': '#e8e8e8',
+              'tertiary-fixed': '#e6e1df',
+              'line-subtle': '#EDEDED',
+              'surface-container-highest': '#e2e2e2',
+              'on-primary-fixed-variant': '#474646',
+              'on-primary-fixed': '#1c1b1b',
+              'on-secondary-fixed': '#1b1c1e',
+              'tertiary-fixed-dim': '#cac6c3',
+              'on-secondary': '#ffffff',
+              'inverse-primary': '#c8c6c5',
+              'surface-bright': '#f9f9f9',
+              'canvas-base': '#F9F9F9',
+              'on-error-container': '#93000a',
+              'secondary-fixed-dim': '#c7c6c8',
+              'secondary-container': '#e0dfe2',
+              'surface-container': '#eeeeee',
+              'outline-variant': '#c4c7c7',
+              'line-border': '#E5E5E5',
+              'on-tertiary-container': '#868381',
+              'surface-tint': '#5f5e5e',
+            },
+            borderRadius: {
+              DEFAULT: '0.25rem',
+              lg: '0.5rem',
+              xl: '0.75rem',
+              full: '9999px',
+            },
+            spacing: {
+              'space-sm': '0.5rem',
+              'margin-desktop': '4rem',
+              'gutter-desktop': '2.5rem',
+              'space-xl': '2.5rem',
+              'margin-tablet': '2.5rem',
+              'space-2xl': '4rem',
+              'space-xs': '0.25rem',
+              'space-md': '1rem',
+              'space-3xl': '6rem',
+              'space-lg': '1.5rem',
+              gutter: '1.5rem',
+              margin: '1.25rem',
+            },
+            fontFamily: {
+              'headline-lg': ['Hanken Grotesk'],
+              'body-lg': ['Hanken Grotesk'],
+              'display-xl': ['Hanken Grotesk'],
+              'label-code': ['JetBrains Mono'],
+              'body-md': ['Hanken Grotesk'],
+              'label-caps': ['Hanken Grotesk'],
+              'index-marker': ['JetBrains Mono'],
+              'headline-lg-mobile': ['Hanken Grotesk'],
+              'display-xl-mobile': ['Hanken Grotesk'],
+              'body-sm': ['Hanken Grotesk'],
+              'headline-md': ['Hanken Grotesk'],
+            },
+            fontSize: {
+              'headline-lg': [
+                '32px',
+                {
+                  lineHeight: '40px',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500',
+                },
+              ],
+              'body-lg': [
+                '16px',
+                {
+                  lineHeight: '26px',
+                  letterSpacing: '-0.005em',
+                  fontWeight: '400',
+                },
+              ],
+              'display-xl': [
+                '56px',
+                {
+                  lineHeight: '64px',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '400',
+                },
+              ],
+              'label-code': [
+                '11px',
+                {
+                  lineHeight: '14px',
+                  letterSpacing: '0.08em',
+                  fontWeight: '400',
+                },
+              ],
+              'body-md': [
+                '14px',
+                {
+                  lineHeight: '22px',
+                  letterSpacing: '0em',
+                  fontWeight: '400',
+                },
+              ],
+              'label-caps': [
+                '11px',
+                {
+                  lineHeight: '14px',
+                  letterSpacing: '0.06em',
+                  fontWeight: '600',
+                },
+              ],
+              'index-marker': [
+                '13px',
+                {
+                  lineHeight: '16px',
+                  letterSpacing: '0.05em',
+                  fontWeight: '400',
+                },
+              ],
+              'headline-lg-mobile': [
+                '24px',
+                {
+                  lineHeight: '32px',
+                  letterSpacing: '-0.01em',
+                  fontWeight: '500',
+                },
+              ],
+              'display-xl-mobile': [
+                '36px',
+                {
+                  lineHeight: '44px',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '400',
+                },
+              ],
+              'body-sm': [
+                '12px',
+                {
+                  lineHeight: '18px',
+                  letterSpacing: '0.01em',
+                  fontWeight: '400',
+                },
+              ],
+              'headline-md': [
+                '20px',
+                {
+                  lineHeight: '28px',
+                  letterSpacing: '-0.01em',
+                  fontWeight: '500',
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col"
+  >
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-background border-b border-line-border"
+    >
+      <div
+        class="h-16 w-full px-margin md:px-margin-tablet lg:px-margin-desktop flex items-center justify-between"
+      >
+        <div class="flex items-center gap-space-md">
+          <a
+            class="flex items-baseline gap-space-xs"
+            data-path="work-library"
+            href="#"
+            ><span
+              class="font-headline-md text-headline-md text-ink-primary tracking-tight font-bold"
+              >WORK LIBRARY</span
+            ><span
+              class="font-label-code text-label-code text-ink-muted hidden sm:inline-block"
+              >[ARCHIVE: 2024]</span
+            ></a
+          >
+        </div>
+        <div class="flex items-center gap-space-lg">
+          <nav
+            class="flex items-center gap-space-lg"
+            data-active-classes="text-ink-primary font-bold border-b border-primary"
+          >
+            <a
+              aria-current="page"
+              class="transition-colors py-1 text-ink-primary font-bold border-b border-primary"
+              data-path="work-library"
+              href="#"
+              >WORK</a
+            ><a
+              class="font-label-caps text-label-caps text-on-surface-variant hover:text-ink-primary transition-colors py-1"
+              data-path="academic-archive"
+              href="#"
+              >ACADEMIC</a
+            ><a
+              class="font-label-caps text-label-caps text-on-surface-variant hover:text-ink-primary transition-colors py-1"
+              data-path="about"
+              href="#"
+              >ABOUT</a
+            ><a
+              class="font-label-caps text-label-caps text-on-surface-variant hover:text-ink-primary transition-colors py-1"
+              data-path="connect"
+              href="#"
+              >CONNECT</a
+            >
+          </nav>
+          <div class="h-4 w-px bg-line-border hidden sm:block"></div>
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-16 flex-1 bg-background">
+      <div class="flex flex-col w-full bg-background text-on-surface">
+        <!-- TOP OVERVIEW SECTION: [F-01] INTRODUCTION & [F-02] GITHUB CONTACT -->
+        <section
+          class="w-full border-b border-line-border bg-background"
+          id="introduction"
+        >
+          <div
+            class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-lg lg:py-space-xl"
+          >
+            <!-- Reference-accurate Layout: Asymmetric split with Black Archival Block -->
+            <div
+              class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-stretch"
+            >
+              <!-- Left Column: Black Monolithic Card inspired by the ABOUT box in the reference image -->
+              <div
+                class="lg:col-span-5 bg-ink-primary text-surface-pure p-space-lg lg:p-space-xl flex flex-col justify-between border border-ink-primary min-h-[320px]"
+              >
+                <div>
+                  <div
+                    class="flex items-center justify-between border-b border-on-surface-variant/40 pb-space-sm mb-space-lg"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-widest text-surface-pure/70"
+                      >[F-01] IDENTIFICATION</span
+                    >
+                    <span
+                      class="font-label-code text-label-code text-surface-pure/50"
+                      >ENTRY // ARCHIVE</span
+                    >
+                  </div>
+                  <!-- Prominent editable placeholder "ACTIVITY NAME" -->
+                  <h1
+                    class="font-display-xl text-[40px] leading-[44px] lg:text-display-xl tracking-tighter uppercase font-medium text-surface-pure mb-space-sm"
+                  >
+                    ACTIVITY NAME
+                  </h1>
+                  <!-- Affiliation -->
+                  <div
+                    class="flex items-center gap-space-xs font-label-code text-label-code text-surface-pure/80 tracking-wide mb-space-lg"
+                  >
+                    <span
+                      class="inline-block w-1.5 h-1.5 bg-surface-pure"
+                    ></span>
+                    <span class="">상명대학교 소프트웨어학과 1학년</span>
+                  </div>
+                  <!-- One-sentence introduction (under 50 Korean chars) -->
+                  <p
+                    class="font-body-lg text-body-lg text-surface-pure/90 font-light leading-relaxed max-w-sm"
+                  >
+                    웹과 시각 디자인을 공부하며 사용자 경험을 탐구합니다.
+                  </p>
+                </div>
+                <!-- [F-02] GitHub Link: Only contact channel allowed -->
+                <div
+                  class="pt-space-lg border-t border-on-surface-variant/30 flex items-center justify-between"
+                >
+                  <div class="flex flex-col">
+                    <span
+                      class="font-label-code text-label-code text-surface-pure/60"
+                      >[F-02] REPOSITORY CONTACT</span
+                    >
+                    <a
+                      class="group inline-flex items-center gap-space-xs font-label-caps text-label-caps text-surface-pure hover:underline decoration-1 underline-offset-4 tracking-wider mt-1"
+                      href="https://github.com/USERNAME"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <span class="">HTTPS://GITHUB.COM/USERNAME</span>
+                      <span
+                        class="material-symbols-outlined text-[14px] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        >north_east</span
+                      >
+                    </a>
+                  </div>
+                  <span
+                    class="font-label-code text-label-code text-surface-pure/40"
+                    >AUTH: VERIFIED</span
+                  >
+                </div>
+              </div>
+              <!-- Right Column: Editorial Index Registration & Overview Spine -->
+              <div
+                class="lg:col-span-7 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-line-border lg:pl-space-xl pt-space-lg lg:pt-0"
+              >
+                <div>
+                  <div
+                    class="flex items-baseline justify-between border-b border-line-border pb-space-sm mb-space-lg"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps text-ink-muted tracking-widest"
+                      >CURRICULAR REGISTER • VOL. 2026-2</span
+                    >
+                    <span class="font-label-code text-label-code text-ink-muted"
+                      >SEMESTER. 02</span
+                    >
+                  </div>
+                  <div class="space-y-space-md">
+                    <p
+                      class="font-headline-md text-headline-md font-normal text-ink-primary tracking-tight"
+                    >
+                      기록과 구축의 체계화: 순수 타이포그래피와 구조적 그리드로
+                      구성된 학업 및 프로젝트 라이브러리.
+                    </p>
+                    <p
+                      class="font-body-md text-body-md text-secondary leading-relaxed"
+                    >
+                      시각 커뮤니케이션 디자인의 엄격한 분할 체계와 소프트웨어
+                      공학의 논리적 아키텍처를 결합하여 설계되었습니다. 본
+                      페이지는 정적 웹 표준 프로토콜을 준수하며 가공되지 않은
+                      순수 서식과 책등 메타포를 통해 성장 궤적을 보존합니다.
+                    </p>
+                  </div>
+                </div>
+                <!-- Architectural Index Badges -->
+                <div
+                  class="grid grid-cols-3 gap-space-sm border-t border-line-border pt-space-md mt-space-lg"
+                >
+                  <div class="flex flex-col">
+                    <span class="font-label-code text-label-code text-ink-muted"
+                      >LOCATION</span
+                    >
+                    <span
+                      class="font-label-caps text-label-caps text-ink-primary mt-1"
+                      >SEOUL, KOREA</span
+                    >
+                  </div>
+                  <div
+                    class="flex flex-col border-l border-line-border pl-space-sm"
+                  >
+                    <span class="font-label-code text-label-code text-ink-muted"
+                      >DEPARTMENT</span
+                    >
+                    <span
+                      class="font-label-caps text-label-caps text-ink-primary mt-1"
+                      >SOFTWARE CS</span
+                    >
+                  </div>
+                  <div
+                    class="flex flex-col border-l border-line-border pl-space-sm"
+                  >
+                    <span class="font-label-code text-label-code text-ink-muted"
+                      >REVISION CYCLE</span
+                    >
+                    <span
+                      class="font-label-caps text-label-caps text-ink-primary mt-1"
+                      >WEEKLY SYNC</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- [F-03] ACHIEVEMENTS (SEMANTIC HTML TABLE) -->
+        <section
+          class="w-full border-b border-line-border bg-background"
+          id="achievements"
+        >
+          <div
+            class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl"
+          >
+            <!-- Section Header -->
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg border-b border-ink-primary pb-space-sm gap-space-xs"
+            >
+              <div>
+                <span
+                  class="font-label-code text-label-code text-ink-muted block"
+                  >[F-03] ARCHIVAL CHRONOLOGY</span
+                >
+                <h2
+                  class="font-headline-lg text-headline-lg font-medium text-ink-primary tracking-tight"
+                >
+                  ACHIEVEMENTS &amp; LEDGER
+                </h2>
+              </div>
+              <span class="font-label-code text-label-code text-ink-muted"
+                >CRITERIA: REVERSE CHRONOLOGICAL [PROJECT, AWARD, CERTIFICATION,
+                ACTIVITY, EDUCATION]</span
+              >
+            </div>
+            <!-- Real semantic HTML <table> (No divs) -->
+            <div class="w-full overflow-x-auto">
+              <table class="w-full border-collapse text-left">
+                <thead>
+                  <tr
+                    class="border-b border-line-border bg-surface-container-low"
+                  >
+                    <th
+                      class="py-space-sm px-space-md font-label-code text-label-code text-ink-primary uppercase w-36"
+                      scope="col"
+                    >
+                      DATE
+                    </th>
+                    <th
+                      class="py-space-sm px-space-md font-label-code text-label-code text-ink-primary uppercase w-36"
+                      scope="col"
+                    >
+                      CATEGORY
+                    </th>
+                    <th
+                      class="py-space-sm px-space-md font-label-code text-label-code text-ink-primary uppercase"
+                      scope="col"
+                    >
+                      CONTENT
+                    </th>
+                    <th
+                      class="py-space-sm px-space-md font-label-code text-label-code text-ink-primary uppercase w-48 text-right"
+                      scope="col"
+                    >
+                      ROLE
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="divide-y divide-line-border font-body-md text-body-md"
+                >
+                  <!-- Row 1: Project (2026.10) -->
+                  <tr class="hover:bg-surface-pure transition-colors group">
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-ink-primary whitespace-nowrap"
+                    >
+                      <span class="text-ink-muted mr-1.5">[01]</span>2026.10
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <span
+                        class="font-label-code text-label-code border border-line-border px-1.5 py-0.5 bg-surface-container-lowest text-ink-primary"
+                        >Project</span
+                      >
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <div class="font-medium text-ink-primary">
+                        반응형 학업 포트폴리오 아카이브 시스템 구축
+                      </div>
+                      <div
+                        class="font-body-sm text-body-sm text-ink-muted mt-0.5"
+                      >
+                        웹 표준 시맨틱 구조와 북쉘프 시각 메타포를 적용한
+                        포트폴리오 프로토타입 설계 및 배포
+                      </div>
+                    </td>
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-right text-secondary whitespace-nowrap"
+                    >
+                      Front-end &amp; Design
+                    </td>
+                  </tr>
+                  <!-- Row 2: Education (2026.09) -->
+                  <tr class="hover:bg-surface-pure transition-colors group">
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-ink-primary whitespace-nowrap"
+                    >
+                      <span class="text-ink-muted mr-1.5">[02]</span>2026.09
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <span
+                        class="font-label-code text-label-code border border-line-border px-1.5 py-0.5 bg-surface-container-lowest text-ink-primary"
+                        >Education</span
+                      >
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <div class="font-medium text-ink-primary">
+                        LLM 에이전트 기반 인터페이스 연구 세미나 수료
+                      </div>
+                      <div
+                        class="font-body-sm text-body-sm text-ink-muted mt-0.5"
+                      >
+                        자율 에이전트와 웹 브라우저 DOM 연동 워크플로우 분석 및
+                        학부생 심화 트레이닝
+                      </div>
+                    </td>
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-right text-secondary whitespace-nowrap"
+                    >
+                      Researcher
+                    </td>
+                  </tr>
+                  <!-- Row 3: Activity (2026.03) -->
+                  <tr class="hover:bg-surface-pure transition-colors group">
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-ink-primary whitespace-nowrap"
+                    >
+                      <span class="text-ink-muted mr-1.5">[03]</span>2026.03
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <span
+                        class="font-label-code text-label-code border border-line-border px-1.5 py-0.5 bg-surface-container-lowest text-ink-primary"
+                        >Activity</span
+                      >
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <div class="font-medium text-ink-primary">
+                        상명대학교 소프트웨어 알고리즘 스터디 세션
+                      </div>
+                      <div
+                        class="font-body-sm text-body-sm text-ink-muted mt-0.5"
+                      >
+                        기초 컴퓨테이셔널 씽킹 및 자료구조 구현 주간 코드 리뷰
+                        및 발표
+                      </div>
+                    </td>
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-right text-secondary whitespace-nowrap"
+                    >
+                      Member
+                    </td>
+                  </tr>
+                  <!-- Row 4: Award (2025.12) -->
+                  <tr class="hover:bg-surface-pure transition-colors group">
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-ink-primary whitespace-nowrap"
+                    >
+                      <span class="text-ink-muted mr-1.5">[04]</span>2025.12
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <span
+                        class="font-label-code text-label-code border border-line-border px-1.5 py-0.5 bg-surface-container-lowest text-ink-primary"
+                        >Award</span
+                      >
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <div class="font-medium text-ink-primary">
+                        청소년 오픈소스 웹 프론티어 공모전 우수상
+                      </div>
+                      <div
+                        class="font-body-sm text-body-sm text-ink-muted mt-0.5"
+                      >
+                        접근성 친화적 디지털 아카이브 인터페이스 기획 및 구현
+                        우수 사례 선정
+                      </div>
+                    </td>
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-right text-secondary whitespace-nowrap"
+                    >
+                      Sole Developer
+                    </td>
+                  </tr>
+                  <!-- Row 5: High School Era Activity (2024.11) -->
+                  <tr class="hover:bg-surface-pure transition-colors group">
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-ink-primary whitespace-nowrap"
+                    >
+                      <span class="text-ink-muted mr-1.5">[05]</span>2024.11
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <span
+                        class="font-label-code text-label-code border border-line-border px-1.5 py-0.5 bg-surface-container-lowest text-ink-primary"
+                        >Activity</span
+                      >
+                    </td>
+                    <td class="py-space-md px-space-md">
+                      <div class="font-medium text-ink-primary">
+                        고교 컴퓨터공학 동아리 웹 표준 테크니컬 리드
+                      </div>
+                      <div
+                        class="font-body-sm text-body-sm text-ink-muted mt-0.5"
+                      >
+                        교내 행사 안내용 정적 웹사이트 마크업 총괄 및 동아리원
+                        대상 HTML/CSS 멘토링
+                      </div>
+                    </td>
+                    <td
+                      class="py-space-md px-space-md font-label-code text-label-code text-right text-secondary whitespace-nowrap"
+                    >
+                      Club Leader
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <!-- [F-04] COURSES (2026-2 COURSES) -->
+        <section
+          class="w-full border-b border-line-border bg-background"
+          id="courses"
+        >
+          <div
+            class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl"
+          >
+            <!-- Section Header -->
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg border-b border-line-border pb-space-sm gap-space-xs"
+            >
+              <div>
+                <span
+                  class="font-label-code text-label-code text-ink-muted block"
+                  >[F-04] ACADEMIC ENROLLMENT</span
+                >
+                <h2
+                  class="font-headline-lg text-headline-lg font-medium text-ink-primary tracking-tight"
+                >
+                  2026-2 COURSE DIRECTORY
+                </h2>
+              </div>
+              <span class="font-label-code text-label-code text-ink-muted"
+                >SEMESTER REGISTRATION // DIRECTORY INDEX</span
+              >
+            </div>
+            <!-- Course Shelf Directory Grid -->
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter border border-line-border bg-surface-pure p-space-md"
+            >
+              <!-- Target Link Item: 웹프로그래밍 및 AI에이전트 활용 (Jumps to #web-programming) -->
+              <a
+                class="group relative flex flex-col justify-between p-space-md bg-background border border-ink-primary hover:bg-ink-primary hover:text-surface-pure transition-colors min-h-[180px]"
+                href="#web-programming"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-space-sm">
+                    <span
+                      class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/70"
+                      >[MAJOR-01]</span
+                    >
+                    <span
+                      class="font-label-code text-[10px] px-1.5 py-0.5 bg-ink-primary text-surface-pure group-hover:bg-surface-pure group-hover:text-ink-primary font-medium uppercase tracking-wider"
+                      >Major Core</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary group-hover:text-surface-pure leading-snug"
+                  >
+                    웹프로그래밍 및 AI에이전트 활용
+                  </h3>
+                </div>
+                <div
+                  class="pt-space-md border-t border-line-border group-hover:border-surface-pure/20 flex items-center justify-between"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/70"
+                    >JUMP TO SHELF ↓</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-[16px] group-hover:translate-y-0.5 transition-transform"
+                    >arrow_downward</span
+                  >
+                </div>
+              </a>
+              <!-- Course 2 -->
+              <div
+                class="flex flex-col justify-between p-space-md bg-background border border-line-border min-h-[180px]"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-space-sm">
+                    <span class="font-label-code text-label-code text-ink-muted"
+                      >[MAJOR-02]</span
+                    >
+                    <span
+                      class="font-label-code text-[10px] px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant font-medium uppercase tracking-wider"
+                      >Major Basic</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary leading-snug"
+                  >
+                    자료구조 및 프로그래밍 기초
+                  </h3>
+                </div>
+                <div
+                  class="pt-space-md border-t border-line-border flex items-center justify-between"
+                >
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >CREDITS: 3.0</span
+                  >
+                  <span class="font-label-code text-label-code text-secondary"
+                    >PROF. RESEARCH</span
+                  >
+                </div>
+              </div>
+              <!-- Course 3 -->
+              <div
+                class="flex flex-col justify-between p-space-md bg-background border border-line-border min-h-[180px]"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-space-sm">
+                    <span class="font-label-code text-label-code text-ink-muted"
+                      >[ELECT-01]</span
+                    >
+                    <span
+                      class="font-label-code text-[10px] px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant font-medium uppercase tracking-wider"
+                      >General Elective</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary leading-snug"
+                  >
+                    시각 디자인과 타이포그래피의 이해
+                  </h3>
+                </div>
+                <div
+                  class="pt-space-md border-t border-line-border flex items-center justify-between"
+                >
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >CREDITS: 2.0</span
+                  >
+                  <span class="font-label-code text-label-code text-secondary"
+                    >STUDIO LECTURE</span
+                  >
+                </div>
+              </div>
+              <!-- Course 4 -->
+              <div
+                class="flex flex-col justify-between p-space-md bg-background border border-line-border min-h-[180px]"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-space-sm">
+                    <span class="font-label-code text-label-code text-ink-muted"
+                      >[BASIC-01]</span
+                    >
+                    <span
+                      class="font-label-code text-[10px] px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant font-medium uppercase tracking-wider"
+                      >General Foundation</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary leading-snug"
+                  >
+                    컴퓨팅 사고와 문제해결
+                  </h3>
+                </div>
+                <div
+                  class="pt-space-md border-t border-line-border flex items-center justify-between"
+                >
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >CREDITS: 3.0</span
+                  >
+                  <span class="font-label-code text-label-code text-secondary"
+                    >LAB WORKSHOP</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- [A-01] SKILLS & TOOLS (BONUS SECTION) -->
+        <section
+          class="w-full border-b border-line-border bg-background"
+          id="skills"
+        >
+          <div
+            class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl"
+          >
+            <!-- Section Header -->
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg border-b border-line-border pb-space-sm gap-space-xs"
+            >
+              <div>
+                <span
+                  class="font-label-code text-label-code text-ink-muted block"
+                  >[A-01] COMPETENCY SPECIFICATION</span
+                >
+                <h2
+                  class="font-headline-lg text-headline-lg font-medium text-ink-primary tracking-tight"
+                >
+                  SKILLS &amp; TOOLS
+                </h2>
+              </div>
+              <span class="font-label-code text-label-code text-ink-muted"
+                >FORMAT: SEMANTIC &lt;UL&gt; • CATALOG TAGS</span
+              >
+            </div>
+            <!-- Semantic HTML <ul> list as required -->
+            <ul
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-space-md list-none p-0 m-0"
+            >
+              <!-- Item 1: HTML5 -->
+              <li
+                class="border border-line-border bg-surface-pure p-space-md flex flex-col justify-between hover:border-ink-primary transition-colors"
+              >
+                <div class="flex items-center justify-between mb-space-lg">
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >[SKILL:01]</span
+                  >
+                  <span class="font-label-code text-[10px] text-ink-primary"
+                    >STD</span
+                  >
+                </div>
+                <div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary"
+                  >
+                    HTML5
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-secondary mt-1">
+                    시맨틱 태그 구조화 및 접근성 명세 준수 마크업
+                  </p>
+                </div>
+              </li>
+              <!-- Item 2: CSS3 -->
+              <li
+                class="border border-line-border bg-surface-pure p-space-md flex flex-col justify-between hover:border-ink-primary transition-colors"
+              >
+                <div class="flex items-center justify-between mb-space-lg">
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >[SKILL:02]</span
+                  >
+                  <span class="font-label-code text-[10px] text-ink-primary"
+                    >CSS</span
+                  >
+                </div>
+                <div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary"
+                  >
+                    CSS3
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-secondary mt-1">
+                    플렉스박스/그리드 레이아웃 및 반응형 타이포그래피
+                  </p>
+                </div>
+              </li>
+              <!-- Item 3: JavaScript (ES6+) -->
+              <li
+                class="border border-line-border bg-surface-pure p-space-md flex flex-col justify-between hover:border-ink-primary transition-colors"
+              >
+                <div class="flex items-center justify-between mb-space-lg">
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >[SKILL:03]</span
+                  >
+                  <span class="font-label-code text-[10px] text-ink-primary"
+                    >JS</span
+                  >
+                </div>
+                <div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary"
+                  >
+                    JavaScript (ES6+)
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-secondary mt-1">
+                    DOM 조작, 이벤트 핸들링 및 모듈형 스크립트 작성
+                  </p>
+                </div>
+              </li>
+              <!-- Item 4: Git & GitHub -->
+              <li
+                class="border border-line-border bg-surface-pure p-space-md flex flex-col justify-between hover:border-ink-primary transition-colors"
+              >
+                <div class="flex items-center justify-between mb-space-lg">
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >[SKILL:04]</span
+                  >
+                  <span class="font-label-code text-[10px] text-ink-primary"
+                    >VCS</span
+                  >
+                </div>
+                <div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary"
+                  >
+                    Git &amp; GitHub
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-secondary mt-1">
+                    브랜치 전략, 커밋 히스토리 관리 및 Pages 배포
+                  </p>
+                </div>
+              </li>
+              <!-- Item 5: Figma -->
+              <li
+                class="border border-line-border bg-surface-pure p-space-md flex flex-col justify-between hover:border-ink-primary transition-colors"
+              >
+                <div class="flex items-center justify-between mb-space-lg">
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >[SKILL:05]</span
+                  >
+                  <span class="font-label-code text-[10px] text-ink-primary"
+                    >DES</span
+                  >
+                </div>
+                <div>
+                  <h3
+                    class="font-headline-md text-headline-md font-medium text-ink-primary"
+                  >
+                    Figma
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-secondary mt-1">
+                    와이어프레임 설계, 디자인 시스템 및 토큰 프로토타이핑
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- [F-05] WEB PROGRAMMING WEEKLY LINKS (15 WEEKS - DIRECT BOOKSHELF TRANSLATION) -->
+        <!-- Target container with exactly id="web-programming" -->
+        <section class="w-full bg-background scroll-mt-20" id="web-programming">
+          <div
+            class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl"
+          >
+            <!-- Section Header -->
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between mb-space-md border-b border-ink-primary pb-space-sm gap-space-xs"
+            >
+              <div>
+                <span
+                  class="font-label-code text-label-code text-ink-muted block"
+                  >[F-05] CURRICULAR ARCHIVE SPINES</span
+                >
+                <h2
+                  class="font-headline-lg text-headline-lg font-medium text-ink-primary tracking-tight"
+                >
+                  WEB PROGRAMMING: 15-WEEK SHELF
+                </h2>
+              </div>
+              <div
+                class="flex items-center gap-space-md font-label-code text-label-code"
+              >
+                <span class="inline-flex items-center gap-1"
+                  ><span class="w-2 h-2 bg-ink-primary"></span> 01~07주 완료
+                  (ACTIVE)</span
+                >
+                <span class="inline-flex items-center gap-1 text-ink-muted"
+                  ><span class="w-2 h-2 border border-line-border"></span>
+                  08~15주 예정 (SCHEDULED)</span
+                >
+              </div>
+            </div>
+            <!-- Bookshelf Shelf Surface: Exactly reproducing the reference image layout with 15 standing spines -->
+            <div
+              class="w-full border-t border-b border-line-border bg-surface-pure overflow-x-auto"
+            >
+              <div
+                class="min-w-[960px] grid grid-cols-15 divide-x divide-line-border h-[460px] border-l border-r border-line-border"
+                style="grid-template-columns: repeat(15, minmax(0, 1fr))"
+              >
+                <!-- WEEK 01 (COMPLETED) -->
+                <a
+                  class="group flex flex-col justify-between p-2 lg:p-3 hover:bg-ink-primary hover:text-surface-pure transition-colors relative cursor-pointer overflow-hidden"
+                  href="[WEEK_01_URL]"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/80 block text-center"
+                    >01</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-primary group-hover:text-surface-pure whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      웹 개발 환경 구축
+                    </span>
+                  </div>
+                  <div
+                    class="text-center pt-2 border-t border-line-border group-hover:border-surface-pure/20"
+                  >
+                    <span
+                      class="font-label-code text-[10px] text-ink-primary group-hover:text-surface-pure font-bold block"
+                      >완료</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted group-hover:text-surface-pure/60 block mt-0.5"
+                      >ED</span
+                    >
+                  </div>
+                </a>
+                <!-- WEEK 02 (COMPLETED) -->
+                <a
+                  class="group flex flex-col justify-between p-2 lg:p-3 hover:bg-ink-primary hover:text-surface-pure transition-colors relative cursor-pointer overflow-hidden"
+                  href="[WEEK_02_URL]"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/80 block text-center"
+                    >02</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-primary group-hover:text-surface-pure whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      시맨틱 HTML5 구조
+                    </span>
+                  </div>
+                  <div
+                    class="text-center pt-2 border-t border-line-border group-hover:border-surface-pure/20"
+                  >
+                    <span
+                      class="font-label-code text-[10px] text-ink-primary group-hover:text-surface-pure font-bold block"
+                      >완료</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted group-hover:text-surface-pure/60 block mt-0.5"
+                      >PD</span
+                    >
+                  </div>
+                </a>
+                <!-- WEEK 03 (COMPLETED) -->
+                <a
+                  class="group flex flex-col justify-between p-2 lg:p-3 hover:bg-ink-primary hover:text-surface-pure transition-colors relative cursor-pointer overflow-hidden"
+                  href="[WEEK_03_URL]"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/80 block text-center"
+                    >03</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-primary group-hover:text-surface-pure whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      CSS 레이아웃 기초
+                    </span>
+                  </div>
+                  <div
+                    class="text-center pt-2 border-t border-line-border group-hover:border-surface-pure/20"
+                  >
+                    <span
+                      class="font-label-code text-[10px] text-ink-primary group-hover:text-surface-pure font-bold block"
+                      >완료</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted group-hover:text-surface-pure/60 block mt-0.5"
+                      >ED</span
+                    >
+                  </div>
+                </a>
+                <!-- WEEK 04 (COMPLETED) -->
+                <a
+                  class="group flex flex-col justify-between p-2 lg:p-3 hover:bg-ink-primary hover:text-surface-pure transition-colors relative cursor-pointer overflow-hidden"
+                  href="[WEEK_04_URL]"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/80 block text-center"
+                    >04</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-primary group-hover:text-surface-pure whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      플렉스박스 시스템
+                    </span>
+                  </div>
+                  <div
+                    class="text-center pt-2 border-t border-line-border group-hover:border-surface-pure/20"
+                  >
+                    <span
+                      class="font-label-code text-[10px] text-ink-primary group-hover:text-surface-pure font-bold block"
+                      >완료</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted group-hover:text-surface-pure/60 block mt-0.5"
+                      >PD</span
+                    >
+                  </div>
+                </a>
+                <!-- WEEK 05 (COMPLETED) -->
+                <a
+                  class="group flex flex-col justify-between p-2 lg:p-3 hover:bg-ink-primary hover:text-surface-pure transition-colors relative cursor-pointer overflow-hidden"
+                  href="[WEEK_05_URL]"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/80 block text-center"
+                    >05</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-primary group-hover:text-surface-pure whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      그리드 및 반응형 웹
+                    </span>
+                  </div>
+                  <div
+                    class="text-center pt-2 border-t border-line-border group-hover:border-surface-pure/20"
+                  >
+                    <span
+                      class="font-label-code text-[10px] text-ink-primary group-hover:text-surface-pure font-bold block"
+                      >완료</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted group-hover:text-surface-pure/60 block mt-0.5"
+                      >ED</span
+                    >
+                  </div>
+                </a>
+                <!-- WEEK 06 (COMPLETED) -->
+                <a
+                  class="group flex flex-col justify-between p-2 lg:p-3 hover:bg-ink-primary hover:text-surface-pure transition-colors relative cursor-pointer overflow-hidden"
+                  href="[WEEK_06_URL]"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/80 block text-center"
+                    >06</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-primary group-hover:text-surface-pure whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      JS 기초 &amp; 문법 구조
+                    </span>
+                  </div>
+                  <div
+                    class="text-center pt-2 border-t border-line-border group-hover:border-surface-pure/20"
+                  >
+                    <span
+                      class="font-label-code text-[10px] text-ink-primary group-hover:text-surface-pure font-bold block"
+                      >완료</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted group-hover:text-surface-pure/60 block mt-0.5"
+                      >PD</span
+                    >
+                  </div>
+                </a>
+                <!-- WEEK 07 (COMPLETED) -->
+                <a
+                  class="group flex flex-col justify-between p-2 lg:p-3 hover:bg-ink-primary hover:text-surface-pure transition-colors relative cursor-pointer overflow-hidden"
+                  href="[WEEK_07_URL]"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted group-hover:text-surface-pure/80 block text-center"
+                    >07</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-primary group-hover:text-surface-pure whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      DOM 제어 및 이벤트
+                    </span>
+                  </div>
+                  <div
+                    class="text-center pt-2 border-t border-line-border group-hover:border-surface-pure/20"
+                  >
+                    <span
+                      class="font-label-code text-[10px] text-ink-primary group-hover:text-surface-pure font-bold block"
+                      >완료</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted group-hover:text-surface-pure/60 block mt-0.5"
+                      >ED</span
+                    >
+                  </div>
+                </a>
+                <!-- WEEK 08 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >08</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      중간 프로젝트 과제
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >08주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >MID</span
+                    >
+                  </div>
+                </div>
+                <!-- WEEK 09 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >09</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      비동기 JS &amp; Fetch
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >09주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >API</span
+                    >
+                  </div>
+                </div>
+                <!-- WEEK 10 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >10</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      AI 에이전트 API 연동
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >10주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >LLM</span
+                    >
+                  </div>
+                </div>
+                <!-- WEEK 11 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >11</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      프롬프트 &amp; UI 파이프라인
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >11주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >DEV</span
+                    >
+                  </div>
+                </div>
+                <!-- WEEK 12 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >12</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      에이전트 인터랙션 설계
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >12주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >INT</span
+                    >
+                  </div>
+                </div>
+                <!-- WEEK 13 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >13</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      상태 관리 및 데이터 흐름
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >13주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >DAT</span
+                    >
+                  </div>
+                </div>
+                <!-- WEEK 14 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >14</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      최적화 및 배포 파이프라인
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >14주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >OPT</span
+                    >
+                  </div>
+                </div>
+                <!-- WEEK 15 (SCHEDULED) -->
+                <div
+                  class="flex flex-col justify-between p-2 lg:p-3 bg-surface-container-low/40 text-ink-muted cursor-not-allowed select-none overflow-hidden"
+                >
+                  <span
+                    class="font-label-code text-label-code text-ink-muted/70 block text-center"
+                    >15</span
+                  >
+                  <div
+                    class="flex-1 flex items-center justify-center my-2 relative"
+                  >
+                    <span
+                      class="font-label-caps text-label-caps tracking-wider text-ink-muted/70 whitespace-nowrap inline-block select-none transform rotate-90 origin-center text-center"
+                    >
+                      최종 결과 발표 &amp; 아카이브
+                    </span>
+                  </div>
+                  <div class="text-center pt-2 border-t border-line-border">
+                    <span
+                      class="font-label-code text-[10px] text-ink-muted font-normal block"
+                      >15주 예정</span
+                    >
+                    <span
+                      class="font-label-code text-[9px] text-ink-muted/50 block mt-0.5"
+                      >FIN</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Bookshelf Reference Plinth -->
+            <div
+              class="flex flex-col sm:flex-row items-center justify-between pt-space-sm border-b border-line-border text-ink-muted pb-space-sm"
+            >
+              <span class="font-label-code text-label-code"
+                >SPINE GEOMETRY: 15-SLOT ARCHITECTURAL REGISTER</span
+              >
+              <span class="font-label-code text-label-code"
+                >INSPIRED BY JYIYOON4.GITHUB.IO/PORTFOLIO</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- [F-06] COLOPHON & FOOTER DETAILS -->
+        <footer
+          class="w-full bg-background border-t border-line-border"
+          id="colophon"
+        >
+          <div
+            class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg"
+            >
+              <!-- Left: Requirement [F-06] "최종 수정일: YYYY-MM-DD" exactly -->
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-space-sm">
+                  <span
+                    class="font-label-caps text-label-caps text-ink-primary font-bold"
+                    >[F-06] COLOPHON</span
+                  >
+                  <span class="font-label-code text-label-code text-ink-muted"
+                    >• SPEC-ID: JY-RESUME-ARCHIVE</span
+                  >
+                </div>
+                <div
+                  class="font-label-code text-label-code text-ink-primary font-medium"
+                >
+                  최종 수정일: 2024-10-31
+                </div>
+                <div class="font-body-sm text-body-sm text-ink-muted">
+                  상명대학교 소프트웨어학과 • 웹프로그래밍 및 AI에이전트 활용
+                  공식 실습 과제
+                </div>
+              </div>
+              <!-- Right: Repeated GitHub link with explicit tag -->
+              <div class="flex flex-col sm:items-end gap-1">
+                <span class="font-label-code text-label-code text-ink-muted"
+                  >OFFICIAL CONTACT ONLY</span
+                >
+                <a
+                  class="group inline-flex items-center gap-space-xs font-label-caps text-label-caps text-ink-primary hover:underline decoration-1 underline-offset-4 tracking-wider"
+                  href="https://github.com/USERNAME"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <span class="">HTTPS://GITHUB.COM/USERNAME</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    >north_east</span
+                  >
+                </a>
+                <span class="font-label-code text-label-code text-ink-muted"
+                  >© 2026 WORK LIBRARY / ALL RIGHTS RESERVED.</span
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </main>
+    <footer
+      class="w-full bg-background border-t border-line-border py-space-xl"
+    >
+      <div
+        class="w-full px-margin md:px-margin-tablet lg:px-margin-desktop flex flex-col md:flex-row justify-between items-start md:items-center gap-space-md"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-center gap-space-xs sm:gap-space-lg"
+        >
+          <span
+            class="font-label-code text-label-code text-ink-primary font-medium"
+            >© 2024 WORK LIBRARY / EDITORIAL ARCHIVE.</span
+          ><span class="font-label-code text-label-code text-ink-muted"
+            >ALL RIGHTS RESERVED.</span
+          >
+        </div>
+        <div class="flex flex-wrap items-center gap-space-md sm:gap-space-xl">
+          <span class="font-label-code text-label-code text-ink-muted"
+            >최종 수정일: 2024-10-31</span
+          ><a
+            class="font-label-code text-label-code text-on-surface-variant hover:text-ink-primary flex items-center gap-space-xs transition-colors"
+            data-path="connect"
+            href="#"
+            ><span class="">GITHUB / REPO</span
+            ><span class="material-symbols-outlined text-[13px]"
+              >north_east</span
+            ></a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
