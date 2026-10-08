@@ -1,26 +1,153 @@
+```html
 <!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>25학번 커디생 인생 최후의 프론트엔드 끌어치기</title>
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>25학번 커디생 최후의 프론트엔드 끌어치기</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+
     <style>
+      :root {
+        color-scheme: light dark;
+        --bg: oklch(95% 0.01 325);
+        --text: oklch(17% 0.001 271);
+        --muted: oklch(58% 0 0);
+        --border: oklch(90% 0 0);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: oklch(10% 0 0);
+          --text: white;
+          --muted: oklch(55% 0 0);
+          --border: oklch(23% 0 0);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        padding: 3% 6%;
+        margin: 0;
+        padding: 3rem 1.5rem;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          1rem/1.6 Pretendard,
+          sans-serif;
       }
-      a {
-        color: gray;
+
+      .container {
+        max-width: 37.5rem;
+        margin: auto;
       }
-      a:hover {
-        color: green;
+      header {
+        margin-bottom: 2rem;
+      }
+      h1 {
+        font-size: 1.375rem;
+      }
+      .desc {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .heading,
+      footer {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font: 0.6875rem/1.5 monospace;
+      }
+
+      .heading {
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      main {
+        display: grid;
+        gap: 2rem;
+      }
+      .list {
+        counter-reset: item;
+      }
+
+      .list a {
+        counter-increment: item;
+        display: flex;
+        gap: 0.75rem;
+        padding: 0.75rem 0.25rem;
+        border-bottom: 1px solid var(--border);
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .list a::before {
+        content: counter(item, decimal-leading-zero);
+        width: 2rem;
+        flex-shrink: 0;
+        color: var(--muted);
+        font: 0.75rem/1.8 monospace;
+      }
+
+      .list a:hover {
+        opacity: 0.65;
+      }
+
+      footer {
+        margin-top: 2rem;
+        padding-top: 1rem;
+      }
+
+      @media (max-width: 30rem) {
+        body {
+          padding: 2rem 1.125rem;
+        }
+        .heading,
+        footer {
+          font-size: 0.625rem;
+        }
       }
     </style>
-    <h2>list</h2>
-    <a href="./w/w2-hw.html"><p>w2</p></a>
-    <a href="./w/w3.html"><p>w3</p></a>
-    <a href="./w/w4.html"><p>w4</p></a>
-    <a href="./w/doc04.html"><p>w5</p></a>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>25학번 커디생 최후의 프론트엔드 끌어치기</h1>
+        <p class="desc">소프트웨어 전공 수업 실습 및 과제 모음</p>
+      </header>
+
+      <main>
+        <section>
+          <div class="heading">[ 01 / LESSON ]</div>
+          <div class="list">
+            <a href="./w/w2-hw.html">w2</a>
+            <a href="./w/w3.html">w3</a>
+            <a href="./w/w4.html">w4</a>
+            <a href="./w/doc04.html">w5</a>
+          </div>
+        </section>
+
+        <section>
+          <div class="heading">[ 02 / PROJECT ]</div>
+          <div class="list">
+            <a href="./w/w2-hw.html">w2</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>Web Programming and AI Agent Utilization</span>
+        <span>2026-2</span>
+      </footer>
+    </div>
   </body>
 </html>
+```
