@@ -115,6 +115,7 @@ main {
 .mono {
   font: 400 11px/14px var(--font-mono);
   letter-spacing: 0.08em;
+  padding-left: 0.175rem;
 }
 .caps {
   font: 600 11px/14px var(--font-sans);
@@ -249,8 +250,8 @@ main {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #000;
-    color: #fff;
+    /* background: #000;
+    color: #fff; */
     @media (max-width: 479px) {
       display: none;
     }
@@ -470,18 +471,24 @@ table {
   padding: var(--sp-md);
   background: var(--white);
   border: 1px solid var(--line);
-  @media (min-width: 768px) {
+  @media (min-width: 608px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 922px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1250px) {
     grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: 1803px) {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 .course {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 180px;
+  min-height: 170px;
   padding: var(--sp-md);
   background: var(--bg);
   border: 1px solid var(--line);
@@ -504,6 +511,7 @@ table {
   }
   & h3 {
     line-height: 1.375;
+    padding-top: 0.5rem;
   }
   & .course__foot {
     display: flex;
