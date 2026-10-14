@@ -1,24 +1,31 @@
-/* ===== Fonts ===== */
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_downward,north_east,person&display=block');
-
-/* ===== Tokens ===== */
 :root {
+  /* color */
+  --line: #e5e5e5;
   --ink: #111;
   --ink-muted: #767676;
+  --text: #1a1c1c;
   --secondary: #5e5e60;
   --on-variant: #444748;
   --bg: #f9f9f9;
   --white: #fff;
-  --line: #e5e5e5;
   --surface-low: #f3f3f3;
   --surface-high: #e8e8e8;
+
+  /* 어두운 배경(--ink) 위에서 쓰는 색 */
+  --on-ink-1: rgb(255 255 255 / 0.9);
+  --on-ink-2: rgb(255 255 255 / 0.8);
+  --on-ink-line: rgb(255 255 255 / 0.2);
+  --ink-line: rgb(68 71 72 / 0.35);
+
+  /* spacing */
   --sp-xs: 0.25rem;
   --sp-sm: 0.5rem;
   --sp-md: 1rem;
   --sp-lg: 1.5rem;
   --sp-xl: 2.5rem;
   --pad-x: 1.25rem;
+
+  /* font */
   --font-sans:
     'Hanken Grotesk', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -31,7 +38,9 @@
   }
 }
 
-/* ===== Base ===== */
+/* =====================================================
+  베이스
+===================================================== */
 *,
 *::before,
 *::after {
@@ -50,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--bg);
-  color: #1a1c1c;
+  color: var(--text);
   font: 400 14px/22px var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overscroll-behavior: none;
@@ -74,11 +83,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-table {
-  border-collapse: collapse;
-  width: 100%;
-  text-align: left;
-}
 main {
   flex: 1;
   width: 100%;
@@ -86,9 +90,7 @@ main {
   background: var(--bg);
 }
 
-/* 가로 오버플로가 생기는 컨테이너: 하단 스크롤바 표시 */
-.shelf,
-.table-wrap {
+.shelf {
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--ink) var(--surface-low);
@@ -103,7 +105,9 @@ main {
   }
 }
 
-/* ===== Helpers ===== */
+/* =====================================================
+  Helpers
+   ===================================================== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -144,10 +148,6 @@ main {
   font-feature-settings: 'liga';
   transition: transform 0.2s;
 }
-.colophon-title {
-  color: var(--ink);
-  font-weight: 700;
-}
 
 .container {
   width: 100%;
@@ -176,13 +176,16 @@ main {
   }
 }
 
-/* ===== Header ===== */
+/* =====================================================
+  Header
+   ===================================================== */
 .site-header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
   background: var(--bg);
   border-bottom: 1px solid var(--line);
+
   & .site-header__inner {
     height: 64px;
     padding: 0 var(--pad-x);
@@ -197,21 +200,10 @@ main {
     gap: var(--sp-lg);
   }
   & .brand {
-    display: flex;
-    align-items: baseline;
-    gap: var(--sp-xs);
     white-space: nowrap;
-    & .brand__name {
-      font: 700 20px/28px var(--font-sans);
-      letter-spacing: -0.01em;
-      color: var(--ink);
-    }
-    & .brand__tag {
-      display: none;
-      @media (min-width: 640px) {
-        display: inline-block;
-      }
-    }
+    font: 700 20px/28px var(--font-sans);
+    letter-spacing: -0.01em;
+    color: var(--ink);
   }
   & .nav {
     display: flex;
@@ -243,25 +235,21 @@ main {
       display: block;
     }
   }
-  & .avatar {
+  & .github-link {
     display: grid;
     place-items: center;
     flex-shrink: 0;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
-    /* background: #000;
-    color: #fff; */
     @media (max-width: 479px) {
       display: none;
-    }
-    & .icon {
-      font-size: 18px;
     }
   }
 }
 
-/* ===== Intro ===== */
+/* =====================================================
+  Intro
+   ===================================================== */
 .intro {
   display: grid;
   gap: var(--sp-xl);
@@ -282,18 +270,16 @@ main {
   @media (min-width: 1024px) {
     padding: var(--sp-xl);
   }
+
   & .id-card__bar {
     display: flex;
     justify-content: space-between;
     margin-bottom: var(--sp-lg);
     padding-bottom: var(--sp-sm);
-    border-bottom: 1px solid rgb(68 71 72 / 0.4);
+    border-bottom: 1px solid var(--ink-line);
     & .caps {
       letter-spacing: 0.1em;
-      color: rgb(255 255 255 / 0.7);
-    }
-    & .mono {
-      color: rgb(255 255 255 / 0.5);
+      color: var(--on-ink-2);
     }
   }
   & .id-card__title {
@@ -311,7 +297,7 @@ main {
     align-items: center;
     gap: var(--sp-xs);
     margin-bottom: var(--sp-lg);
-    color: rgb(255 255 255 / 0.8);
+    color: var(--on-ink-2);
     letter-spacing: 0.05em;
     &::before {
       content: '';
@@ -323,15 +309,11 @@ main {
   & .id-card__lead {
     max-width: 24rem;
     font: 300 16px/26px var(--font-sans);
-    color: rgb(255 255 255 / 0.9);
+    color: var(--on-ink-1);
   }
   & .id-card__foot {
     padding-top: var(--sp-lg);
-    border-top: 1px solid rgb(68 71 72 / 0.3);
-    & .mono {
-      display: block;
-      color: rgb(255 255 255 / 0.6);
-    }
+    border-top: 1px solid var(--ink-line);
   }
 }
 .link-ext {
@@ -360,6 +342,7 @@ main {
     border-top: 0;
     border-left: 1px solid var(--line);
   }
+
   & .overview__bar {
     display: flex;
     align-items: baseline;
@@ -403,67 +386,9 @@ main {
   }
 }
 
-/* ===== Achievements table ===== */
-table {
-  & thead tr {
-    border-bottom: 1px solid var(--line);
-    background: var(--surface-low);
-  }
-  & th {
-    padding: var(--sp-sm) var(--sp-md);
-    color: var(--ink);
-    text-transform: uppercase;
-    font-weight: 400;
-    &:nth-child(-n + 2) {
-      width: 9rem;
-    }
-    &:nth-child(4) {
-      width: 12rem;
-      text-align: right;
-    }
-  }
-  & td {
-    padding: var(--sp-md);
-    vertical-align: middle;
-  }
-  & tbody tr {
-    transition: background 0.2s;
-    &:hover {
-      background: var(--white);
-    }
-    & + tr {
-      border-top: 1px solid var(--line);
-    }
-  }
-  & .td-date {
-    white-space: nowrap;
-    color: var(--ink);
-    & .muted {
-      margin-right: 6px;
-    }
-  }
-  & .td-role {
-    white-space: nowrap;
-    text-align: right;
-    color: var(--secondary);
-  }
-  & .td-title {
-    font-weight: 500;
-    color: var(--ink);
-  }
-  & .td-desc {
-    margin-top: 2px;
-  }
-}
-.tag {
-  display: inline-block;
-  padding: 2px 6px;
-  border: 1px solid var(--line);
-  background: var(--white);
-  color: var(--ink);
-}
-
-/* ===== Courses ===== */
+/* =====================================================
+  강의
+   ===================================================== */
 .courses {
   display: grid;
   grid-template-columns: 1fr;
@@ -495,6 +420,7 @@ table {
   transition:
     background 0.2s,
     color 0.2s;
+
   & .course__top {
     display: flex;
     align-items: center;
@@ -523,6 +449,8 @@ table {
       color: var(--secondary);
     }
   }
+
+  /* 링크 카드 */
   &.course--link {
     border-color: var(--ink);
     & .course__badge {
@@ -547,7 +475,7 @@ table {
         color: var(--ink);
       }
       & .course__foot {
-        border-color: rgb(255 255 255 / 0.2);
+        border-color: var(--on-ink-line);
       }
       & .icon {
         transform: translateY(2px);
@@ -556,7 +484,9 @@ table {
   }
 }
 
-/* ===== Skills ===== */
+/* =====================================================
+  스킬
+   ===================================================== */
 .skills {
   display: grid;
   grid-template-columns: 1fr;
@@ -597,74 +527,194 @@ table {
   }
 }
 
-/* ===== Bookshelf ===== */
+/* =====================================================
+  Bookshelf
+    --on  : 호버로 펼쳐질 수 있으면 1, 아니면 0   (= clamp(0, done - week + 1, 1))
+    --off : 반대 (예정이면 1)
+    → 이 0/1 값을 색·굵기·펼침 정도에 곱해서 상태를 표현
+   ===================================================== */
 #web-programming {
+  --total: 15;
   scroll-margin-top: 5rem;
 }
-.legend {
-  display: flex;
+
+/* 완료/예정 구분이 없는 책장은 모든 칸을 "완료(=1)" 상태로 취급 */
+.shelf--plain {
+  --done: 15;
+}
+
+/* 제목 옆에 범례가 다 들어가지 않으면 범례가 통째로 제목 아래로 내려감 */
+#web-programming .section-head {
   flex-wrap: wrap;
+  row-gap: var(--sp-sm);
+}
+
+/* ----- 범례 ----- */
+.legend {
+  --has-done: clamp(0, var(--done), 1);
+  --has-todo: clamp(0, calc(var(--total) - var(--done)), 1);
+
+  /* done = 완료 주차 수, next = 다음(첫 예정) 주차 번호 */
+  counter-reset: done var(--done) next var(--done);
+  counter-increment: next;
+
+  display: flex;
+  flex-wrap: nowrap; /* 범례 안에서는 줄바꿈 X */
   align-items: center;
   gap: var(--sp-md);
+  white-space: nowrap;
+
   & span {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    overflow: hidden;
+    white-space: nowrap;
   }
   & i {
+    flex-shrink: 0;
     width: 8px;
     height: 8px;
     background: var(--ink);
   }
+  & .legend__done {
+    max-width: calc(var(--has-done) * 40em); /* 완료가 0주면 숨김 */
+    &::after {
+      content: '01~' counter(done, decimal-leading-zero) '주 완료';
+    }
+  }
+  & .legend__todo {
+    max-width: calc(var(--has-todo) * 40em); /* 15주 모두 완료면 숨김 */
+    &::after {
+      content: counter(next, decimal-leading-zero) '~15주 예정';
+    }
+  }
   & .is-todo {
     color: var(--ink-muted);
     & i {
-      background: none;
-      border: 1px solid var(--line);
+      background: var(--ink-muted);
     }
   }
 }
+
+/* ----- 책장 ----- */
+.shelf {
+  background: var(--white);
+  border-block: 1px solid var(--line);
+}
 .shelf__grid {
-  display: grid;
-  grid-template-columns: repeat(15, minmax(0, 1fr));
+  --slots: 15; /* 한 줄에 꽂히는 칸 수 */
+  --grow: 9; /* 호버한 책이 평소 칸보다 몇 배 넓어지는지 */
+
+  container-type: inline-size; /* 100cqw = 책장 폭 → 책등 폭 계산용 */
+  display: flex;
   min-width: 960px;
   height: 460px;
   border-inline: 1px solid var(--line);
-  & > li + li {
-    border-left: 1px solid var(--line);
+
+  & > li {
+    --spine-w: calc(100cqw / var(--slots)); /* 책등(=접힌 칸) 폭: 항상 일정 */
+    --on: clamp(0, calc(var(--done) - var(--week) + 1), 1);
+    --off: calc(1 - var(--on));
+    --tone: color-mix(
+      in srgb,
+      var(--ink) calc(var(--on) * 100%),
+      var(--ink-muted)
+    );
+
+    position: relative;
+    display: flex;
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    counter-set: week var(--week); /* 번호 표기용 카운터 */
+    transition: flex-grow 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+    & + li {
+      border-left: 1px solid var(--line);
+    }
+
+    /* 호버/키보드 포커스 시 옆으로 펼쳐짐 (예정 칸은 --on:0 이라 그대로) */
+    &:is(:hover, :focus-within) {
+      flex-grow: calc(1 + var(--on) * (var(--grow) - 1));
+    }
+
+    /* 예정 주차 hover 차단 */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: calc(var(--off) * 100%);
+      cursor: not-allowed;
+    }
+
+    /* 비어 있는 칸 (장식용 빈 선반) */
+    &.is-empty {
+      --on: 0;
+      --off: 0;
+      border-left-color: transparent;
+    }
+    /* 마지막 책 바로 옆 1칸만 선을 남겨 책장의 끝을 닫아줌 */
+    &:not(.is-empty) + .is-empty {
+      border-left-color: var(--line);
+    }
   }
 }
+
+/* ----- 책등 ----- */
 .spine {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 min(var(--spine-w), 100%); /* 펼쳐져도 책등 폭 유지, 눌린 이웃은 칸 폭만큼 */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 0;
   height: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem 0.125rem;
   overflow: hidden;
   text-align: center;
-  transition:
-    background 0.2s,
-    color 0.2s;
-  @media (min-width: 1024px) {
-    padding: 0.75rem;
+  background: rgb(243 243 243 / calc(var(--off) * 0.4));
+  transition: background 0.22s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
   }
+
+  /* 상태에 따라 흐려지는 요소 */
+  & :is(.spine__no, .spine__title span, b) {
+    opacity: calc(1 - var(--off) * 0.3);
+  }
+
   & .spine__no {
     color: var(--ink-muted);
+    &::before {
+      content: counter(week, decimal-leading-zero);
+    }
   }
   & .spine__title {
     flex: 1;
+    min-height: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: var(--sp-sm) 0;
     & span {
+      /* 아래 → 위로 읽는 세로 제목 (긴 제목은 옆 줄로 자동 줄바꿈) */
       writing-mode: vertical-rl;
       text-orientation: sideways;
-      white-space: nowrap;
+      transform: rotate(180deg);
+      max-height: 300px;
+      white-space: normal;
+      word-break: keep-all;
       user-select: none;
-      color: var(--ink);
-      font: 600 11px/14px var(--font-sans);
-      letter-spacing: 0.06em;
+      color: var(--tone);
+      font:
+        500 12px/14px var(--font-mono),
+        var(--font-sans);
+      letter-spacing: 0.1em;
+      font-weight: calc(400 + var(--on) * 100); /* 예정 400 → 완료 500 */
     }
   }
   & .spine__status {
@@ -672,8 +722,10 @@ table {
     border-top: 1px solid var(--line);
     & b {
       display: block;
-      font: 700 10px/14px var(--font-mono);
-      color: var(--ink);
+      font: 400 10px/14px var(--font-mono);
+      font-weight: calc(400 + var(--on) * 300); /* 예정 400 → 완료 700 */
+      white-space: nowrap;
+      color: var(--tone);
     }
     & small {
       display: block;
@@ -682,102 +734,185 @@ table {
       color: var(--ink-muted);
     }
   }
-  &[href] {
-    cursor: pointer;
-    &:hover {
-      background: var(--ink);
-      color: var(--white);
-      & .spine__no,
-      & .spine__title span,
-      & b {
-        color: var(--white);
-      }
-      & small {
-        color: rgb(255 255 255 / 0.6);
-      }
-      & .spine__status {
-        border-color: rgb(255 255 255 / 0.2);
-      }
+}
+
+/* 성과 책장: 빈 칸 쪽 바깥 오른쪽 선도 숨김 */
+.shelf--plain .shelf__grid {
+  border-right-color: transparent;
+}
+
+/* 호버/포커스 중인 책등: 연한 회색 + 오른쪽 구분선 (펼쳐진 썸네일과 경계) */
+.shelf__grid > li:is(:hover, :focus-within) .spine {
+  background: rgb(243 243 243 / var(--on));
+  box-shadow: inset calc(var(--on) * -1px) 0 0 var(--line);
+}
+
+/* 15주 책장 전용: 완료/예정 문구 */
+.shelf--weeks .spine__status {
+  /* ::before = 완료일 때만 보임 / ::after = 예정일 때만 보임
+     (글자 크기를 0으로 만들어 숨김) */
+  & :is(b, small) {
+    &::before,
+    &::after {
+      display: block;
+      line-height: 1.4;
+    }
+    &::before {
+      font-size: calc(var(--on) * 1em);
+    }
+    &::after {
+      font-size: calc(var(--off) * 1em);
     }
   }
-  &.is-todo {
-    background: rgb(243 243 243 / 0.4);
-    cursor: not-allowed;
-    user-select: none;
-    & .spine__no,
-    & .spine__title span,
-    & b {
-      color: var(--ink-muted);
-      opacity: 0.7;
-      font-weight: 400;
-    }
+  & b::before {
+    content: '완료';
+  }
+  & b::after {
+    content: counter(week, decimal-leading-zero) '주 예정';
   }
 }
-.shelf-note {
+
+/* ----- 호버 시 옆으로 펼쳐지는 썸네일 ----- */
+.preview {
+  position: absolute;
+  inset: 0 0 0 var(--spine-w);
+  overflow: hidden;
+  background: var(--ink); /* 썸네일 이미지가 없을 때 기본 배경 */
+  opacity: 0;
+  transform: scale(0.985);
+  pointer-events: none;
+  transition:
+    opacity 0.26s ease,
+    transform 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* 이미지가 없을 때 보이는 큰 번호 (이미지가 있으면 가려짐) */
+  &::before {
+    content: counter(week, decimal-leading-zero);
+    position: absolute;
+    top: var(--sp-md);
+    right: var(--sp-lg);
+    font: 500 clamp(64px, 9vw, 120px) / 1 var(--font-sans);
+    letter-spacing: -0.06em;
+    color: rgb(255 255 255 / 0.08);
+  }
+  & img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.shelf__grid > li:is(:hover, :focus-within) .preview {
+  opacity: var(--on);
+  transform: scale(1);
+}
+
+/* 링크 썸네일(15주 책장): href 가 있고 펼쳐진 상태에서만 클릭 가능 */
+a[href].preview {
+  cursor: pointer;
+}
+.shelf__grid > li:is(:hover, :focus-within) a[href].preview {
+  pointer-events: auto;
+}
+
+.preview__overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  padding: var(--sp-sm) 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink-muted);
-  @media (min-width: 640px) {
-    flex-direction: row;
+  justify-content: flex-end;
+  gap: var(--sp-sm);
+  padding: var(--sp-lg);
+  color: var(--white);
+  background: linear-gradient(0deg, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0) 70%);
+
+  & .preview__meta {
+    padding-left: 0;
+    color: rgb(255 255 255 / 0.7);
+    text-transform: uppercase;
+  }
+  & .preview__title {
+    font: 700 clamp(20px, 2.2vw, 30px) / 1.2 var(--font-sans);
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+    color: var(--white);
+  }
+  & .preview__desc {
+    max-width: 28rem;
+    font-size: 13px;
+    line-height: 20px;
+    word-break: keep-all;
+    color: rgb(255 255 255 / 0.8);
   }
 }
-.shelf {
-  background: var(--white);
-  border-block: 1px solid var(--line);
 
-  /* 화면 폭이 매우 좁아지면(767px 이하) 가로 행으로 층층이 쌓임 */
-  @media (max-width: 767px) {
+@media (prefers-reduced-motion: reduce) {
+  .shelf__grid > li,
+  .preview {
+    transition: none;
+  }
+}
+
+/* 화면 폭이 좁아지면(768px 이하) 가로 행으로 층층이 쌓임 (썸네일 없음) */
+@media (max-width: 768px) {
+  .shelf {
     overflow-x: visible;
-    & .shelf__grid {
+  }
+  .shelf__grid {
+    display: block;
+    min-width: 0;
+    height: auto;
+    border-inline: 0;
+    & > li {
       display: block;
-      min-width: 0;
-      height: auto;
-      border-inline: 0;
-      & > li + li {
+      overflow: visible;
+      &.is-empty,
+      & .preview {
+        display: none;
+      }
+      & + li {
         border-left: 0;
         border-top: 1px solid var(--line);
       }
     }
-    & .spine {
-      display: grid;
-      grid-template-columns: 3rem 1fr 4.5rem;
-      align-items: center;
-      height: auto;
-      min-height: 72px;
-      padding: var(--sp-md) var(--sp-sm);
-      text-align: left;
-      & .spine__title {
-        margin: 0;
-        & span {
-          writing-mode: horizontal-tb;
-          white-space: normal;
-          text-align: center;
-          font: 600 14px/20px var(--font-sans);
-          letter-spacing: 0.02em;
-        }
-      }
-      & .spine__status {
-        padding: 2px 0 2px var(--sp-sm);
-        border: 0;
-        border-left: 1px solid var(--line);
+  }
+  .spine {
+    display: grid;
+    grid-template-columns: 3rem 1fr 4.5rem;
+    align-items: center;
+    height: auto;
+    min-height: 72px;
+    padding: var(--sp-md) var(--sp-sm);
+    text-align: left;
+    & .spine__title {
+      margin: 0;
+      & span {
+        writing-mode: horizontal-tb;
+        transform: none;
+        max-height: none;
         text-align: center;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.02em;
       }
-      &.is-todo .spine__title span {
-        font-weight: 400;
-      }
+    }
+    & .spine__status {
+      padding: 2px 0 2px var(--sp-sm);
+      border: 0;
+      border-left: 1px solid var(--line);
+      text-align: center;
     }
   }
 }
 
-/* ===== Footer ===== */
+/* =====================================================
+  Footer
+   ===================================================== */
 .site-footer {
   border-top: 1px solid var(--line);
   background: var(--bg);
+
   & .site-footer__inner {
     display: flex;
     flex-direction: column;
@@ -793,11 +928,6 @@ table {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    & .row {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-sm);
-    }
     &.site-footer__col--right {
       @media (min-width: 768px) {
         align-items: flex-end;
