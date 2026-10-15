@@ -6,339 +6,243 @@
     <title>YOON's WORK LIBRARY</title>
     <meta
       name="description"
-      content="소웨 웹프 과제 학업·프로젝트 포트폴리오 아카이브"
+      content="YOON의 학업·프로젝트 이력서 아카이브 (웹프로그래밍 및 AI에이전트 활용 중간 과제)"
     />
-
-    <!-- 폰트: CSS @import 대신 link로 불러와 렌더링 지연 최소화 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_downward,north_east&display=block"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=arrow_downward,arrow_upward&amp;display=block"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="site-header__inner">
-        <a class="brand" href="index.html">YOON's WORK LIBRARY</a>
-        <div class="site-header__right">
-          <nav class="nav caps" aria-label="주요 메뉴">
-            <a href="mid.html" aria-current="page">LIBRARY</a>
-            <a href="#introduction">ABOUT</a>
-            <a href="#courses">ACADEMIC</a>
-            <a href="#colophon">CONNECT</a>
-          </nav>
-          <span class="divider" aria-hidden="true"></span>
-          <a
-            class="github-link"
-            href="https://github.com/jyiyoon4"
-            aria-label="GitHub"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="32"
-              height="32"
-              fill="currentColor"
-              aria-hidden="true"
-              focusable="false"
+    <!-- [F-01] 소개 / [F-02] GitHub -->
+    <header class="page-header" id="introduction">
+      <div class="site-header">
+        <div class="site-header__inner">
+          <a class="brand" href="#introduction">YOON's WORK LIBRARY</a>
+          <div class="site-header__right">
+            <nav class="nav caps" aria-label="주요 메뉴">
+              <a href="#introduction">LIBRARY</a>
+              <a href="#achievements">LEDGER</a>
+              <a href="#courses">ACADEMIC</a>
+              <a href="#web-programming">SHELF</a>
+            </nav>
+            <span class="divider" aria-hidden="true"></span>
+            <a
+              class="github-link"
+              href="https://github.com/jyiyoon4"
+              aria-label="GitHub 프로필 (jyiyoon4)"
             >
-              <path
-                d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"
-              />
-            </svg>
-          </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="intro">
+          <div class="id-card">
+            <div>
+              <div class="id-card__bar">
+                <span class="caps">Introduction</span>
+                <span class="caps">2026-2</span>
+              </div>
+              <h1 class="id-card__title">YOON</h1>
+              <p class="id-card__affil mono">
+                상명대학교 커뮤니케이션디자인전공 2학년
+              </p>
+              <p class="id-card__lead">
+                제게 디자인은 여러 정보와 이야기를 보기 쉽게 분류해 책장에 꽂아
+                넣는 과정입니다.
+              </p>
+            </div>
+            <div class="id-card__foot">
+              <a class="link-ext link-ext--down caps" href="#achievements">
+                VIEW LEDGER
+                <span class="icon" aria-hidden="true">arrow_downward</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="overview">
+            <div>
+              <div class="overview__bar">
+                <span class="caps muted">Welcome to Yoon's Library</span>
+              </div>
+              <div class="overview__text">
+                <p class="h-md">정보를 분류하고, 이야기를 탐색합니다.</p>
+                <p>
+                  저에게 디자인은 정보와 이야기를 보기 쉽게 정리해 책장에 꽂아
+                  넣는 과정과 같습니다. 다양한 방향을 탐색하며 저만의 방식을
+                  찾아가고 있습니다. 방문자가 직접 책장을 탐색하며 프로젝트를
+                  발견하고, 각 작업에 담긴 이야기를 읽어 나가는 경험을
+                  제공하고자 합니다.
+                </p>
+              </div>
+            </div>
+            <dl class="meta">
+              <div>
+                <dt class="mono muted">LOCATION</dt>
+                <dd class="caps">Cheonan, KOREA</dd>
+              </div>
+              <div>
+                <dt class="mono muted">DEPARTMENT</dt>
+                <dd class="caps">COMMUNICATION DESIGN</dd>
+              </div>
+              <div>
+                <dt class="mono muted">FOCUS</dt>
+                <dd class="caps">UX/UI · INTERACTION</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <!-- [F-01] 소개 / [F-02] GitHub -->
-      <section class="section" id="introduction" aria-labelledby="intro-title">
-        <div class="container">
-          <div class="intro">
-            <div class="id-card">
-              <div>
-                <div class="id-card__bar">
-                  <span class="caps">도서관을 만들어 갑니다.</span>
-                </div>
-                <h1 class="id-card__title" id="intro-title">YOON</h1>
-                <p class="id-card__affil mono">
-                  상명대학교 커뮤니케이션디자인전공 2학년
-                </p>
-                <p class="id-card__lead">
-                  제게 디자인은 여러 정보와 이야기를 보기 쉽게 분류하고,
-                  정리하여 책장에 꽂아 넣는 과정입니다.
-                </p>
-              </div>
-              <div class="id-card__foot">
-                <a
-                  class="link-ext caps"
-                  href="https://github.com/jyiyoon4"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                  <span class="icon" aria-hidden="true">north_east</span>
-                </a>
-              </div>
-            </div>
-
-            <div class="overview">
-              <div>
-                <div class="overview__bar">
-                  <span class="caps muted"
-                    >CURRICULAR REGISTER • VOL. 2026-2</span
-                  >
-                  <span class="mono muted">SEMESTER. 02</span>
-                </div>
-                <div class="overview__text">
-                  <p class="h-md">
-                    기록과 구축의 체계화: 순수 타이포그래피와 구조적 그리드로
-                    구성된 학업 및 프로젝트 라이브러리.
-                  </p>
-                  <p>
-                    시각 커뮤니케이션 디자인의 엄격한 분할 체계와 소프트웨어
-                    공학의 논리적 아키텍처를 결합하여 설계되었습니다. 본
-                    페이지는 정적 웹 표준 프로토콜을 준수하며 가공되지 않은 순수
-                    서식과 책등 메타포를 통해 성장 궤적을 보존합니다.
-                  </p>
-                </div>
-              </div>
-              <dl class="meta">
-                <div>
-                  <dt class="mono muted">LOCATION</dt>
-                  <dd class="caps">SEOUL, KOREA</dd>
-                </div>
-                <div>
-                  <dt class="mono muted">DEPARTMENT</dt>
-                  <dd class="caps">SOFTWARE CS</dd>
-                </div>
-                <div>
-                  <dt class="mono muted">REVISION CYCLE</dt>
-                  <dd class="caps">WEEKLY SYNC</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- [F-03] 성과 (책장 형태: 15주 책장과 같은 레이아웃)
-        각 li: --week = 번호, 썸네일은 images/achievements/NN.jpg (없으면 검은 기본 배경)
-        책을 추가하면 맨 아래 is-empty li 를 하나 지우고 새 li 를 위에 추가 (총 15칸 유지) -->
+      <!-- [F-03] 실적 목록: 표, 시기 역순(최신이 위)
+        추가: tbody 맨 위에 tr 한 줄만 넣으면 NO. 는 CSS 가 자동으로 매김
+        분류는 프로젝트 / 수상 / 자격 / 활동 / 교육 중 하나만 사용 -->
       <section class="section" id="achievements" aria-labelledby="ach-title">
         <div class="container">
           <div class="section-head section-head--strong">
             <div>
-              <span class="mono muted">[F-03] ARCHIVAL CHRONOLOGY</span>
               <h2 class="h-lg" id="ach-title">ACHIEVEMENTS &amp; LEDGER</h2>
             </div>
-            <span class="mono muted">CRITERIA: REVERSE CHRONOLOGICAL</span>
           </div>
 
-          <div class="shelf shelf--plain">
-            <ol class="shelf__grid" aria-label="최신순 성과 목록">
-              <li style="--week: 1">
-                <div class="spine" tabindex="0">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span
-                      >반응형 학업 포트폴리오 아카이브 시스템 구축</span
-                    ></span
-                  >
-                  <span class="spine__status"
-                    ><b>PRJ</b><small>26.10</small></span
-                  >
-                </div>
-                <div class="preview">
-                  <img
-                    src="images/achievements/01.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono"
-                      >PROJECT · <time datetime="2026-10">2026.10</time> ·
-                      FRONT-END &amp; DESIGN</span
-                    >
-                    <p class="preview__title">
-                      반응형 학업 포트폴리오 아카이브 시스템 구축
+          <div class="ledger">
+            <table class="ledger__table">
+              <caption class="sr-only">
+                실적 목록 (최신순): 시기, 분류, 내용, 역할
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="ledger__no">NO.</th>
+                  <th scope="col" class="ledger__date">시기</th>
+                  <th scope="col" class="ledger__type">분류</th>
+                  <th scope="col">내용</th>
+                  <th scope="col" class="ledger__role">역할</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="ledger__no"></td>
+                  <td class="ledger__date">
+                    <time datetime="2026-10">2022.12</time>
+                  </td>
+                  <td class="ledger__type">
+                    <span class="tag">동아리</span>
+                  </td>
+                  <td>
+                    <p class="ledger__title">Filosofia 문집 제작</p>
+                    <p class="ledger__desc small">
+                      고등학교 도서부 동아리 문집 제작. 문집의 편집 디자인,
+                      발주, 특전 굿즈 제작 담당.
                     </p>
-                    <p class="preview__desc">
-                      웹 표준 시맨틱 구조와 북쉘프 시각 메타포를 적용한
-                      포트폴리오 프로토타입 설계 및 배포
+                  </td>
+                  <td class="ledger__role">기획 · 디자인</td>
+                </tr>
+
+                <tr>
+                  <td class="ledger__no"></td>
+                  <td class="ledger__date">
+                    <time datetime="2026-03">2026.03</time>
+                  </td>
+                  <td class="ledger__type">
+                    <span class="tag">동아리 과제전</span>
+                  </td>
+                  <td>
+                    <p class="ledger__title">Digital Objet: Clock</p>
+                    <p class="ledger__desc small">
+                      시계 · 시간을 대주제로, 펜로즈의 무한 계단 구조를 컨셉으로
+                      잡아 끝없이 이어지는 계단을 오르며 상승과 반복으로
+                      이루어지는 시간을 시각화하였다.
                     </p>
-                  </div>
-                </div>
-              </li>
-              <li style="--week: 2">
-                <div class="spine" tabindex="0">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span
-                      >LLM 에이전트 기반 인터페이스 연구 세미나 수료</span
-                    ></span
-                  >
-                  <span class="spine__status"
-                    ><b>EDU</b><small>26.09</small></span
-                  >
-                </div>
-                <div class="preview">
-                  <img
-                    src="images/achievements/02.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono"
-                      >EDUCATION · <time datetime="2026-09">2026.09</time> ·
-                      RESEARCHER</span
-                    >
-                    <p class="preview__title">
-                      LLM 에이전트 기반 인터페이스 연구 세미나 수료
+                  </td>
+                  <td class="ledger__role">디자인 · 프론트엔드 개발</td>
+                </tr>
+
+                <tr>
+                  <td class="ledger__no"></td>
+                  <td class="ledger__date">
+                    <time datetime="2026-09">2026.05</time>
+                  </td>
+                  <td class="ledger__type"><span class="tag">동아리</span></td>
+                  <td>
+                    <p class="ledger__title">
+                      2026 축제 부스: 한누리관 탈출 게임
                     </p>
-                    <p class="preview__desc">
-                      자율 에이전트와 웹 브라우저 DOM 연동 워크플로우 분석 및
-                      학부생 심화 트레이닝
+                    <p class="ledger__desc small">
+                      카메라 인식을 통해 얼굴을 움직이며, 기둥과 뒤에서 날아오는
+                      장애물을 피하는 게임 제작.
                     </p>
-                  </div>
-                </div>
-              </li>
-              <li style="--week: 3">
-                <div class="spine" tabindex="0">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span
-                      >상명대학교 소프트웨어 알고리즘 스터디 세션</span
-                    ></span
-                  >
-                  <span class="spine__status"
-                    ><b>ACT</b><small>26.03</small></span
-                  >
-                </div>
-                <div class="preview">
-                  <img
-                    src="images/achievements/03.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono"
-                      >ACTIVITY · <time datetime="2026-03">2026.03</time> ·
-                      MEMBER</span
-                    >
-                    <p class="preview__title">
-                      상명대학교 소프트웨어 알고리즘 스터디 세션
+                  </td>
+                  <td class="ledger__role">디자인 · 프론트엔드 개발</td>
+                </tr>
+
+                <tr>
+                  <td class="ledger__no"></td>
+                  <td class="ledger__date">
+                    <time datetime="2025-12">2026.10</time>
+                  </td>
+                  <td class="ledger__type"><span class="tag">스터디</span></td>
+                  <td>
+                    <p class="ledger__title">Html & Css 강의</p>
+                    <p class="ledger__desc small">
+                      동아리 신입 부원을 대상으로 html과 css의 기초 강의를
+                      진행중이다.
                     </p>
-                    <p class="preview__desc">
-                      기초 컴퓨테이셔널 씽킹 및 자료구조 구현 주간 코드 리뷰 및
-                      발표
+                  </td>
+                  <td class="ledger__role">강의자</td>
+                </tr>
+                <!-- <tr>
+                  <td class="ledger__no"></td>
+                  <td class="ledger__date">
+                    <time datetime="2024-11">2024.11</time>
+                  </td>
+                  <td class="ledger__type"><span class="tag">활동</span></td>
+                  <td>
+                    <p class="ledger__title">
+                      고등학교 컴퓨터공학 동아리 웹 표준 테크니컬 리드
                     </p>
-                  </div>
-                </div>
-              </li>
-              <li style="--week: 4">
-                <div class="spine" tabindex="0">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span
-                      >청소년 오픈소스 웹 프론티어 공모전 우수상</span
-                    ></span
-                  >
-                  <span class="spine__status"
-                    ><b>AWD</b><small>25.12</small></span
-                  >
-                </div>
-                <div class="preview">
-                  <img
-                    src="images/achievements/04.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono"
-                      >AWARD · <time datetime="2025-12">2025.12</time> · SOLE
-                      DEVELOPER</span
-                    >
-                    <p class="preview__title">
-                      청소년 오픈소스 웹 프론티어 공모전 우수상
-                    </p>
-                    <p class="preview__desc">
-                      접근성 친화적 디지털 아카이브 인터페이스 기획 및 구현 우수
-                      사례 선정
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li style="--week: 5">
-                <div class="spine" tabindex="0">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span
-                      >고교 컴퓨터공학 동아리 웹 표준 테크니컬 리드</span
-                    ></span
-                  >
-                  <span class="spine__status"
-                    ><b>ACT</b><small>24.11</small></span
-                  >
-                </div>
-                <div class="preview">
-                  <img
-                    src="images/achievements/05.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono"
-                      >ACTIVITY · <time datetime="2024-11">2024.11</time> · CLUB
-                      LEADER</span
-                    >
-                    <p class="preview__title">
-                      고교 컴퓨터공학 동아리 웹 표준 테크니컬 리드
-                    </p>
-                    <p class="preview__desc">
+                    <p class="ledger__desc small">
                       교내 행사 안내용 정적 웹사이트 마크업 총괄 및 동아리원
                       대상 HTML/CSS 멘토링
                     </p>
-                  </div>
-                </div>
-              </li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-              <li class="is-empty" aria-hidden="true"></li>
-            </ol>
+                  </td>
+                  <td class="ledger__role">동아리장 · 마크업 총괄</td>
+                </tr> -->
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      <!-- [F-04] 수강 과목 -->
+      <!-- [F-04] 수강 과목: 목록 -->
       <section class="section" id="courses" aria-labelledby="course-title">
         <div class="container">
           <div class="section-head">
             <div>
+              <span class="mono muted">[F-04] COURSE INDEX</span>
               <h2 class="h-lg" id="course-title">2026-2 COURSE DIRECTORY</h2>
             </div>
             <span class="mono muted"
@@ -346,89 +250,392 @@
             >
           </div>
 
-          <div class="courses">
-            <a class="course course--link" href="#web-programming">
-              <div>
-                <div class="course__top">
-                  <span class="mono muted">[HBJW0008-1]</span
-                  ><span class="course__badge">Non-Major Basic</span>
+          <ul class="courses">
+            <li>
+              <a class="course course--link" href="#web-programming">
+                <div>
+                  <div class="course__top">
+                    <span class="mono muted">[HBJW0008-1]</span>
+                    <span class="course__badge">교양</span>
+                  </div>
+                  <h3 class="h-md">웹프로그래밍 및 AI에이전트 활용</h3>
                 </div>
-                <h3 class="h-md">웹프로그래밍 및 AI에이전트 활용</h3>
-              </div>
-              <div class="course__foot">
-                <span class="mono">PROF. 배동성</span>
-                <span class="icon" aria-hidden="true">arrow_downward</span>
-              </div>
-            </a>
-            <article class="course">
-              <div>
-                <div class="course__top">
-                  <span class="mono muted">[HBIA1112-2]</span
-                  ><span class="course__badge">Major Basic</span>
+                <div class="course__foot">
+                  <span class="mono">PROF. 배동성</span>
+                  <span class="icon" aria-hidden="true">arrow_downward</span>
                 </div>
-                <h3 class="h-md">커뮤니케이션디자인 Ⅱ</h3>
-              </div>
-              <div class="course__foot">
-                <span class="mono">PROF. 한만오</span>
-              </div>
-            </article>
-            <article class="course">
-              <div>
-                <div class="course__top">
-                  <span class="mono muted">[HBIA3141-2]</span
-                  ><span class="course__badge">Major Basic</span>
+              </a>
+            </li>
+            <li>
+              <article class="course">
+                <div>
+                  <div class="course__top">
+                    <span class="mono muted">[HBIA1112-2]</span>
+                    <span class="course__badge">전공</span>
+                  </div>
+                  <h3 class="h-md">커뮤니케이션디자인 Ⅱ</h3>
                 </div>
-                <h3 class="h-md">정보인터랙션디자인기초</h3>
-              </div>
-              <div class="course__foot">
-                <span class="mono">PROF. 손우성</span>
-              </div>
-            </article>
-            <article class="course">
-              <div>
-                <div class="course__top">
-                  <span class="mono muted">[HBIA3152-3]</span
-                  ><span class="course__badge">Major Basic</span>
+                <div class="course__foot">
+                  <span class="mono">PROF. 한만오</span>
                 </div>
-                <h3 class="h-md">일러스트레이션Ⅰ</h3>
-              </div>
-              <div class="course__foot">
-                <span class="mono">PROF. 유동관</span>
-              </div>
-            </article>
-            <article class="course">
-              <div>
-                <div class="course__top">
-                  <span class="mono muted">[HBIA4346-1]</span
-                  ><span class="course__badge">Major Basic</span>
+              </article>
+            </li>
+            <li>
+              <article class="course">
+                <div>
+                  <div class="course__top">
+                    <span class="mono muted">[HBIA3141-2]</span>
+                    <span class="course__badge">전공</span>
+                  </div>
+                  <h3 class="h-md">정보인터랙션디자인기초</h3>
                 </div>
-                <h3 class="h-md">타이포그래피</h3>
-              </div>
-              <div class="course__foot">
-                <span class="mono">PROF. 서승연</span>
-              </div>
-            </article>
-            <article class="course">
-              <div>
-                <div class="course__top">
-                  <span class="mono muted">[HBLA0332-1]</span
-                  ><span class="course__badge">General Education</span>
+                <div class="course__foot">
+                  <span class="mono">PROF. 손우성</span>
                 </div>
-                <h3 class="h-md">젠더와문화</h3>
-              </div>
-              <div class="course__foot">
-                <span class="mono">PROF. 박유미</span>
-              </div>
-            </article>
+              </article>
+            </li>
+            <li>
+              <article class="course">
+                <div>
+                  <div class="course__top">
+                    <span class="mono muted">[HBIA3152-3]</span>
+                    <span class="course__badge">전공</span>
+                  </div>
+                  <h3 class="h-md">일러스트레이션Ⅰ</h3>
+                </div>
+                <div class="course__foot">
+                  <span class="mono">PROF. 유동관</span>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="course">
+                <div>
+                  <div class="course__top">
+                    <span class="mono muted">[HBIA4346-1]</span>
+                    <span class="course__badge">전공</span>
+                  </div>
+                  <h3 class="h-md">타이포그래피</h3>
+                </div>
+                <div class="course__foot">
+                  <span class="mono">PROF. 서승연</span>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="course">
+                <div>
+                  <div class="course__top">
+                    <span class="mono muted">[HBLA0332-1]</span>
+                    <span class="course__badge">교양</span>
+                  </div>
+                  <h3 class="h-md">젠더와문화</h3>
+                </div>
+                <div class="course__foot">
+                  <span class="mono">PROF. 박유미</span>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- [F-05] 웹프로그래밍 15주 책장 (주차 번호·"NN주"·WEEK NN 은 CSS 자동)
+        · 완료: li.is-done + a.spine(href) + a.preview(같은 href), 상태 "완료"
+        · 예정: li.is-todo + div.spine (링크 없음), 상태 "예정"
+        · 주차를 마치면 is-todo 를 is-done 으로, div 를 a(href)로, "예정"을 "완료"로 바꾸고 preview 추가, 범례 숫자 수정 -->
+      <section class="section" id="web-programming" aria-labelledby="web-title">
+        <div class="container">
+          <div class="section-head section-head--strong">
+            <div>
+              <span class="mono muted">[F-05] WEEKLY PRACTICE</span>
+              <h2 class="h-lg" id="web-title">
+                WEB PROGRAMMING: 15-WEEK SHELF
+              </h2>
+            </div>
+            <p class="legend mono">
+              <span class="legend__item"
+                ><span class="legend__swatch" aria-hidden="true"></span>01~05주
+                완료</span
+              >
+              <span class="legend__item legend__item--todo"
+                ><span class="legend__swatch" aria-hidden="true"></span>06~15주
+                예정</span
+              >
+            </p>
+          </div>
+
+          <div class="shelf">
+            <ol class="shelf__grid" aria-label="웹프로그래밍 1~15주차 실습">
+              <li class="is-done">
+                <a class="spine" href="weeks/week-01.html">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span
+                      >강의소개, Chapter 1. 인터넷과 웹 환경의 발전</span
+                    ></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">완료</span
+                    ><span class="spine__tag">NET</span></span
+                  >
+                </a>
+                <a
+                  class="preview"
+                  href="weeks/week-01.html"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <span class="preview__overlay">
+                    <span class="preview__meta mono">NET</span>
+                    <span class="preview__title"
+                      >강의소개, Chapter 1. 인터넷과 웹 환경의 발전</span
+                    >
+                    <span class="preview__desc">과제 페이지 보기 →</span>
+                  </span>
+                </a>
+              </li>
+              <li class="is-done">
+                <a class="spine" href="weeks/week-02.html">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 2. HTML5 문서 기본</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">완료</span
+                    ><span class="spine__tag">HTML</span></span
+                  >
+                </a>
+                <a
+                  class="preview"
+                  href="weeks/week-02.html"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <span class="preview__overlay">
+                    <span class="preview__meta mono">HTML</span>
+                    <span class="preview__title"
+                      >Chapter 2. HTML5 문서 기본</span
+                    >
+                    <span class="preview__desc">과제 페이지 보기 →</span>
+                  </span>
+                </a>
+              </li>
+              <li class="is-done">
+                <a class="spine" href="weeks/week-03.html">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 3. 링크와 멀티미디어</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">완료</span
+                    ><span class="spine__tag">LNK</span></span
+                  >
+                </a>
+                <a
+                  class="preview"
+                  href="weeks/week-03.html"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <span class="preview__overlay">
+                    <span class="preview__meta mono">LNK</span>
+                    <span class="preview__title"
+                      >Chapter 3. 링크와 멀티미디어</span
+                    >
+                    <span class="preview__desc">과제 페이지 보기 →</span>
+                  </span>
+                </a>
+              </li>
+              <li class="is-done">
+                <a class="spine" href="../../w/doc04.html">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 4. CSS3 스타일시트 기초</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">완료</span
+                    ><span class="spine__tag">CSS</span></span
+                  >
+                </a>
+                <a
+                  class="preview"
+                  href="../../w/doc04.html"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <span class="preview__overlay">
+                    <span class="preview__meta mono">CSS</span>
+                    <span class="preview__title"
+                      >Chapter 4. CSS3 스타일시트 기초</span
+                    >
+                    <span class="preview__desc">과제 페이지 보기 →</span>
+                  </span>
+                </a>
+              </li>
+              <li class="is-done">
+                <a class="spine" href="weeks/week-05.html">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 5. 고급 표현을 위한 CSS3 활용</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">완료</span
+                    ><span class="spine__tag">ADV</span></span
+                  >
+                </a>
+                <a
+                  class="preview"
+                  href="weeks/week-05.html"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <span class="preview__overlay">
+                    <span class="preview__meta mono">ADV</span>
+                    <span class="preview__title"
+                      >Chapter 5. 고급 표현을 위한 CSS3 활용</span
+                    >
+                    <span class="preview__desc">과제 페이지 보기 →</span>
+                  </span>
+                </a>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 6. 다양한 입력 폼</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">FORM</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span
+                      >Chapter 7. HTML5와 CSS3를 이용한 웹사이트 제작 실습</span
+                    ></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">WEB</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"><span>중간고사</span></span>
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">MID</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 8. 자바스크립트 프로그래밍 기초</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">JS</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 9. 자바스크립트 객체와 DOM</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">DOM</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 10. 이벤트 처리와 동적 웹 문서</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">EVT</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span
+                      >Chapter 11. HTML5 캔버스 그리기 API, Chapter 12. HTML5
+                      인터페이스 관련 API</span
+                    ></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">API</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span
+                      >Chapter 13. HTML5 저장 및 기타 API, Chapter 14. HTML5를
+                      이용한 모바일 웹 게임 제작 실습</span
+                    ></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">APP</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>웹 서버 구축하기</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">SRV</span></span
+                  >
+                </div>
+              </li>
+              <li class="is-todo">
+                <div class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>기말 프로젝트 발표</span></span
+                  >
+                  <span class="spine__status"
+                    ><span class="spine__state">예정</span
+                    ><span class="spine__tag">FIN</span></span
+                  >
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
 
-      <!-- [A-01] 스킬 -->
-      <section class="section" id="skills" aria-labelledby="skills-title">
+      <!-- [A-01] 추가 요구사항: 기술 스택 -->
+      <section id="skills" aria-labelledby="skills-title">
         <div class="container">
           <div class="section-head">
             <div>
+              <span class="mono muted">[A-01] TOOLKIT</span>
               <h2 class="h-lg" id="skills-title">SKILLS &amp; TOOLS</h2>
             </div>
             <span class="mono muted"
@@ -438,8 +645,8 @@
           <ul class="skills">
             <li class="skill">
               <div class="skill__top">
-                <span class="mono muted">[SKILL:01]</span
-                ><span class="mono">STD</span>
+                <span class="mono muted skill__no"></span>
+                <span class="mono">STD</span>
               </div>
               <div>
                 <h3 class="h-md">HTML5</h3>
@@ -450,8 +657,8 @@
             </li>
             <li class="skill">
               <div class="skill__top">
-                <span class="mono muted">[SKILL:02]</span
-                ><span class="mono">CSS</span>
+                <span class="mono muted skill__no"></span>
+                <span class="mono">CSS</span>
               </div>
               <div>
                 <h3 class="h-md">CSS3</h3>
@@ -462,8 +669,8 @@
             </li>
             <li class="skill">
               <div class="skill__top">
-                <span class="mono muted">[SKILL:03]</span
-                ><span class="mono">JS</span>
+                <span class="mono muted skill__no"></span>
+                <span class="mono">JS</span>
               </div>
               <div>
                 <h3 class="h-md">JavaScript (ES6+)</h3>
@@ -474,8 +681,8 @@
             </li>
             <li class="skill">
               <div class="skill__top">
-                <span class="mono muted">[SKILL:04]</span
-                ><span class="mono">VCS</span>
+                <span class="mono muted skill__no"></span>
+                <span class="mono">VCS</span>
               </div>
               <div>
                 <h3 class="h-md">Git &amp; GitHub</h3>
@@ -486,8 +693,8 @@
             </li>
             <li class="skill">
               <div class="skill__top">
-                <span class="mono muted">[SKILL:05]</span
-                ><span class="mono">DES</span>
+                <span class="mono muted skill__no"></span>
+                <span class="mono">DES</span>
               </div>
               <div>
                 <h3 class="h-md">Figma</h3>
@@ -499,459 +706,23 @@
           </ul>
         </div>
       </section>
-
-      <!-- [F-05] 웹프로그래밍 15주 책장
-        style="--done: N" N = 완성한 주차 -->
-      <section
-        id="web-programming"
-        aria-labelledby="web-title"
-        style="--done: 5"
-      >
-        <div class="container">
-          <div class="section-head section-head--strong">
-            <div>
-              <h2 class="h-lg" id="web-title">
-                WEB PROGRAMMING: 15-WEEK SHELF
-              </h2>
-            </div>
-            <div class="legend mono">
-              <span class="legend__done"><i></i></span>
-              <span class="legend__todo is-todo"><i></i></span>
-            </div>
-          </div>
-
-          <div class="shelf shelf--weeks">
-            <!-- 예정 주차(--done 보다 큰 주차)는 링크 비활성: <a> 에서 href 를 뺌.
-              주차를 완료하면 해당 li 의 두 <a>(spine, preview)에 href 를 넣고 --done 을 올릴 것
-            각 li: --week = 주차 번호, data-tag = 짧은 태그
-              썸네일은 images/weeks/week-NN.jpg (없으면 검은 기본 배경) -->
-            <ol class="shelf__grid">
-              <li style="--week: 1">
-                <a class="spine" href="weeks/week-01.html">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>웹 개발 환경 구축</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="ENV"></small
-                  ></span>
-                </a>
-                <a
-                  class="preview"
-                  href="weeks/week-01.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="images/weeks/week-01.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 01 · ENV</span>
-                    <p class="preview__title">웹 개발 환경 구축</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 2">
-                <a class="spine" href="weeks/week-02.html">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>시맨틱 HTML5 구조</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="HTM"></small
-                  ></span>
-                </a>
-                <a
-                  class="preview"
-                  href="weeks/week-02.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="images/weeks/week-02.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 02 · HTM</span>
-                    <p class="preview__title">시맨틱 HTML5 구조</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 3">
-                <a class="spine" href="weeks/week-03.html">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>CSS 레이아웃 기초</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="CSS"></small
-                  ></span>
-                </a>
-                <a
-                  class="preview"
-                  href="weeks/week-03.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="images/weeks/week-03.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 03 · CSS</span>
-                    <p class="preview__title">CSS 레이아웃 기초</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 4">
-                <a class="spine" href="../../w/doc04.html">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>플렉스박스 시스템</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="FLX"></small
-                  ></span>
-                </a>
-                <a
-                  class="preview"
-                  href="../../w/doc04.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="images/weeks/week-04.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 04 · FLX</span>
-                    <p class="preview__title">플렉스박스 시스템</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 5">
-                <a class="spine" href="weeks/week-05.html">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>그리드 및 반응형 웹</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="GRD"></small
-                  ></span>
-                </a>
-                <a
-                  class="preview"
-                  href="weeks/week-05.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="images/weeks/week-05.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 05 · GRD</span>
-                    <p class="preview__title">그리드 및 반응형 웹</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 6">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>JS 기초 &amp; 문법 구조</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="JS"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-06.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 06 · JS</span>
-                    <p class="preview__title">JS 기초 &amp; 문법 구조</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 7">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>DOM 제어 및 이벤트</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="DOM"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-07.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 07 · DOM</span>
-                    <p class="preview__title">DOM 제어 및 이벤트</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 8">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>중간 프로젝트 과제</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="MID"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-08.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 08 · MID</span>
-                    <p class="preview__title">중간 프로젝트 과제</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 9">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>비동기 JS &amp; Fetch</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="API"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-09.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 09 · API</span>
-                    <p class="preview__title">비동기 JS &amp; Fetch</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 10">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>AI 에이전트 API 연동</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="LLM"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-10.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 10 · LLM</span>
-                    <p class="preview__title">AI 에이전트 API 연동</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 11">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>프롬프트 &amp; UI 파이프라인</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="DEV"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-11.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 11 · DEV</span>
-                    <p class="preview__title">프롬프트 &amp; UI 파이프라인</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 12">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>에이전트 인터랙션 설계</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="INT"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-12.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 12 · INT</span>
-                    <p class="preview__title">에이전트 인터랙션 설계</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 13">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>상태 관리 및 데이터 흐름</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="DAT"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-13.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 13 · DAT</span>
-                    <p class="preview__title">상태 관리 및 데이터 흐름</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 14">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>최적화 및 배포 파이프라인</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="OPT"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-14.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 14 · OPT</span>
-                    <p class="preview__title">최적화 및 배포 파이프라인</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-              <li style="--week: 15">
-                <a class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>최종 결과 발표 &amp; 아카이브</span></span
-                  >
-                  <span class="spine__status"
-                    ><b></b><small data-tag="FIN"></small
-                  ></span>
-                </a>
-                <a class="preview" tabindex="-1" aria-hidden="true">
-                  <img
-                    src="images/weeks/week-15.jpg"
-                    alt=""
-                    loading="lazy"
-                    draggable="false"
-                    onerror="this.remove()"
-                  />
-                  <div class="preview__overlay">
-                    <span class="preview__meta mono">WEEK 15 · FIN</span>
-                    <p class="preview__title">최종 결과 발표 &amp; 아카이브</p>
-                    <p class="preview__desc">과제 페이지 보기 →</p>
-                  </div>
-                </a>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
     </main>
 
-    <!-- [F-06] 콜로폰 -->
+    <!-- [F-06] 최종 수정일: 마지막 커밋 날짜와 같아야 함 (커밋 훅으로 자동 갱신 가능) -->
     <footer class="site-footer" id="colophon">
       <div class="container site-footer__inner">
         <div class="site-footer__col">
           <p class="date mono">
-            최종 수정일: <time datetime="2026-10-09">2026-10-09</time>
+            최종 수정일: <time datetime="2026-10-15">2026-10-15</time>
           </p>
           <p class="small muted">
             SMU SW • Web Programming and AI Agent Utilization
           </p>
         </div>
         <div class="site-footer__col site-footer__col--right">
-          <a
-            class="link-ext contact caps"
-            href="https://github.com/jyiyoon4"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-            <span class="icon" aria-hidden="true">north_east</span>
+          <a class="link-ext link-ext--up contact caps" href="#introduction">
+            BACK TO TOP
+            <span class="icon" aria-hidden="true">arrow_upward</span>
           </a>
           <span class="mono muted"
             >© 2026 WORK LIBRARY / ALL RIGHTS RESERVED.</span

@@ -24,6 +24,7 @@
   --sp-lg: 1.5rem;
   --sp-xl: 2.5rem;
   --pad-x: 1.25rem;
+  --bar-h: 64px; /* 상단 고정 바 높이 */
 
   /* font */
   --font-sans:
@@ -86,11 +87,16 @@ a {
 main {
   flex: 1;
   width: 100%;
-  padding-top: 64px;
   background: var(--bg);
 }
+/* 앵커로 이동했을 때 고정 바에 제목이 가려지지 않게 */
+main section {
+  scroll-margin-top: var(--bar-h);
+}
 
-.shelf {
+/* 가로 스크롤 영역 (책장 / 실적 표) 공용 스크롤바 */
+.shelf,
+.ledger {
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--ink) var(--surface-low);
@@ -112,9 +118,12 @@ main {
   position: absolute;
   width: 1px;
   height: 1px;
+  margin: -1px;
+  padding: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+  border: 0;
 }
 .mono {
   font: 400 11px/14px var(--font-mono);
@@ -124,6 +133,7 @@ main {
 .caps {
   font: 600 11px/14px var(--font-sans);
   letter-spacing: 0.06em;
+  padding-left: 0.175rem;
 }
 .muted {
   color: var(--ink-muted);
@@ -177,8 +187,13 @@ main {
 }
 
 /* =====================================================
-  Header
+  Header (페이지 상단: 고정 바 + 소개 카드)
    ===================================================== */
+.page-header {
+  padding-top: var(--bar-h); /* 고정 바 높이만큼 소개 카드를 내림 */
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
 .site-header {
   position: fixed;
   inset: 0 0 auto;
@@ -187,7 +202,7 @@ main {
   border-bottom: 1px solid var(--line);
 
   & .site-header__inner {
-    height: 64px;
+    height: var(--bar-h);
     padding: 0 var(--pad-x);
     display: flex;
     align-items: center;
@@ -206,11 +221,11 @@ main {
     color: var(--ink);
   }
   & .nav {
-    display: flex;
+    display: none; /* 좁은 화면: 로고 + GitHub 만 */
     align-items: center;
     gap: var(--sp-lg);
-    @media (max-width: 479px) {
-      gap: var(--sp-md);
+    @media (min-width: 720px) {
+      display: flex;
     }
     & a {
       padding: var(--sp-xs) 0;
@@ -219,11 +234,6 @@ main {
       &:hover {
         color: var(--ink);
       }
-      &[aria-current='page'] {
-        color: var(--ink);
-        font-weight: 700;
-        border-bottom: 1px solid #000;
-      }
     }
   }
   & .divider {
@@ -231,7 +241,7 @@ main {
     width: 1px;
     height: 16px;
     background: var(--line);
-    @media (min-width: 640px) {
+    @media (min-width: 720px) {
       display: block;
     }
   }
@@ -241,8 +251,14 @@ main {
     flex-shrink: 0;
     width: 32px;
     height: 32px;
-    @media (max-width: 479px) {
-      display: none;
+    color: var(--ink);
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.7;
+    }
+    &:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
     }
   }
 }
@@ -307,9 +323,12 @@ main {
     }
   }
   & .id-card__lead {
-    max-width: 24rem;
     font: 300 16px/26px var(--font-sans);
+    word-break: keep-all;
     color: var(--on-ink-1);
+    @media (max-width: 683px) {
+      max-width: 26rem;
+    }
   }
   & .id-card__foot {
     padding-top: var(--sp-lg);
@@ -330,12 +349,18 @@ main {
       transform: translate(2px, -2px);
     }
   }
+  &.link-ext--down:hover .icon {
+    transform: translateY(2px);
+  }
+  &.link-ext--up:hover .icon {
+    transform: translateY(-2px);
+  }
 }
 .overview {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: var(--sp-lg);
+  padding-top: var(--sp-md);
   border-top: 1px solid var(--line);
   @media (min-width: 1024px) {
     padding: 0 0 0 var(--sp-xl);
@@ -387,7 +412,102 @@ main {
 }
 
 /* =====================================================
-  강의
+  [F-03] 실적 대장 (table)
+    · 책장과 같은 흰 바탕 + 가는 선, 머리행 아래 검은 굵은 선
+    · 좁은 화면에서는 표 자체가 가로 스크롤 (페이지는 스크롤 X)
+   ===================================================== */
+.ledger {
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+.ledger__table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+
+  & th,
+  & td {
+    padding: var(--sp-md);
+    text-align: left;
+    vertical-align: top;
+  }
+  & th {
+    padding-block: 0.75rem;
+    font: 400 11px/14px var(--font-mono);
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    border-bottom: 1px solid var(--ink);
+  }
+  & tbody {
+    counter-reset: row; /* NO. 자동 번호 */
+  }
+  & tbody tr {
+    counter-increment: row;
+    transition: background 0.2s;
+    & + tr {
+      border-top: 1px solid var(--line);
+    }
+    &:hover {
+      background: var(--surface-low);
+    }
+  }
+  & .ledger__no {
+    width: 4.5rem;
+  }
+  & td.ledger__no {
+    font: 400 11px/22px var(--font-mono);
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    &::before {
+      content: counter(row, decimal-leading-zero);
+    }
+  }
+  & .ledger__date {
+    width: 7.5rem;
+    white-space: nowrap;
+  }
+  & td.ledger__date {
+    font: 500 12px/22px var(--font-mono);
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+  & .ledger__type {
+    width: 7rem;
+    white-space: nowrap;
+  }
+  & .ledger__role {
+    width: 9rem;
+  }
+  & td.ledger__role {
+    color: var(--on-variant);
+    word-break: keep-all;
+  }
+}
+.ledger__title {
+  font: 500 16px/22px var(--font-sans);
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  color: var(--ink);
+}
+.ledger__desc {
+  margin-top: 4px;
+  word-break: keep-all;
+  color: var(--secondary);
+}
+/* 분류 표기 (수강 과목 배지와 같은 모양) */
+.tag {
+  display: inline-block;
+  margin-top: 2px;
+  padding: 2px 6px;
+  background: var(--ink);
+  color: var(--white);
+  font: 500 11px/14px var(--font-sans);
+  letter-spacing: 0.04em;
+}
+
+/* =====================================================
+  [F-04] 강의
    ===================================================== */
 .courses {
   display: grid;
@@ -407,6 +527,13 @@ main {
   }
   @media (min-width: 1803px) {
     grid-template-columns: repeat(6, 1fr);
+  }
+  /* 목록 항목 안의 카드가 칸 높이를 꽉 채우도록 */
+  & > li {
+    display: flex;
+    & > .course {
+      flex: 1;
+    }
   }
 }
 .course {
@@ -431,9 +558,8 @@ main {
     padding: 2px 6px;
     background: var(--surface-high);
     color: var(--on-variant);
-    font: 500 10px/14px var(--font-mono);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font: 500 11px/14px var(--font-sans);
+    letter-spacing: 0.04em;
   }
   & h3 {
     line-height: 1.375;
@@ -460,7 +586,8 @@ main {
     & .icon {
       font-size: 16px;
     }
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background: var(--ink);
       color: var(--white);
       & h3 {
@@ -485,9 +612,10 @@ main {
 }
 
 /* =====================================================
-  스킬
+  [A-01] 스킬
    ===================================================== */
 .skills {
+  counter-reset: skill; /* [SKILL:NN] 자동 번호 */
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--sp-md);
@@ -502,9 +630,10 @@ main {
   }
 }
 .skill {
+  counter-increment: skill;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start; /* 제목·설명이 모든 카드에서 같은 높이에서 시작 */
   padding: var(--sp-md);
   background: var(--white);
   border: 1px solid var(--line);
@@ -512,10 +641,13 @@ main {
   &:hover {
     border-color: var(--ink);
   }
+  & .skill__no::before {
+    content: '[SKILL:' counter(skill, decimal-leading-zero) ']';
+  }
   & .skill__top {
     display: flex;
     justify-content: space-between;
-    margin-bottom: var(--sp-lg);
+    margin-bottom: var(--sp-md);
     & span:last-child {
       font-size: 10px;
       color: var(--ink);
@@ -528,20 +660,13 @@ main {
 }
 
 /* =====================================================
-  Bookshelf
-    --on  : 호버로 펼쳐질 수 있으면 1, 아니면 0   (= clamp(0, done - week + 1, 1))
-    --off : 반대 (예정이면 1)
-    → 이 0/1 값을 색·굵기·펼침 정도에 곱해서 상태를 표현
+  [F-05] 15주 책장
+    · 15칸 책장, 세로 책등, 호버 시 옆으로 펼쳐지는 썸네일
+    · 상태는 li 클래스로만 결정 (인라인 style 없음)
+        li.is-done : 완료  → --on: 1 (진한 글자, 펼쳐짐, 링크)
+        li.is-todo : 예정  → --on: 0 (흐린 글자, 안 펼쳐짐, 링크 없음)
+    · 주차 번호는 CSS 카운터로 자동 매김
    ===================================================== */
-#web-programming {
-  --total: 15;
-  scroll-margin-top: 5rem;
-}
-
-/* 완료/예정 구분이 없는 책장은 모든 칸을 "완료(=1)" 상태로 취급 */
-.shelf--plain {
-  --done: 15;
-}
 
 /* 제목 옆에 범례가 다 들어가지 않으면 범례가 통째로 제목 아래로 내려감 */
 #web-programming .section-head {
@@ -551,49 +676,28 @@ main {
 
 /* ----- 범례 ----- */
 .legend {
-  --has-done: clamp(0, var(--done), 1);
-  --has-todo: clamp(0, calc(var(--total) - var(--done)), 1);
-
-  /* done = 완료 주차 수, next = 다음(첫 예정) 주차 번호 */
-  counter-reset: done var(--done) next var(--done);
-  counter-increment: next;
-
   display: flex;
-  flex-wrap: nowrap; /* 범례 안에서는 줄바꿈 X */
+  flex-wrap: nowrap;
   align-items: center;
   gap: var(--sp-md);
   white-space: nowrap;
-
-  & span {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  & i {
-    flex-shrink: 0;
-    width: 8px;
-    height: 8px;
-    background: var(--ink);
-  }
-  & .legend__done {
-    max-width: calc(var(--has-done) * 40em); /* 완료가 0주면 숨김 */
-    &::after {
-      content: '01~' counter(done, decimal-leading-zero) '주 완료';
-    }
-  }
-  & .legend__todo {
-    max-width: calc(var(--has-todo) * 40em); /* 15주 모두 완료면 숨김 */
-    &::after {
-      content: counter(next, decimal-leading-zero) '~15주 예정';
-    }
-  }
-  & .is-todo {
-    color: var(--ink-muted);
-    & i {
-      background: var(--ink-muted);
-    }
+  color: var(--ink);
+}
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.legend__swatch {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--ink);
+}
+.legend__item--todo {
+  color: var(--ink-muted);
+  & .legend__swatch {
+    background: var(--ink-muted);
   }
 }
 
@@ -605,33 +709,37 @@ main {
 .shelf__grid {
   --slots: 15; /* 한 줄에 꽂히는 칸 수 */
   --grow: 9; /* 호버한 책이 평소 칸보다 몇 배 넓어지는지 */
+  /* 책장 폭 = 화면 폭 - 좌우 여백 (최소 960px) */
+  --shelf-w: max(960px, 100vw - 2 * var(--pad-x));
 
-  container-type: inline-size; /* 100cqw = 책장 폭 → 책등 폭 계산용 */
+  counter-reset: week;
   display: flex;
   min-width: 960px;
   height: 460px;
   border-inline: 1px solid var(--line);
 
   & > li {
-    --spine-w: calc(100cqw / var(--slots)); /* 책등(=접힌 칸) 폭: 항상 일정 */
-    --on: clamp(0, calc(var(--done) - var(--week) + 1), 1);
+    --spine-w: calc(var(--shelf-w) / var(--slots)); /* 책등(=접힌 칸) 폭 */
+    --on: 0;
     --off: calc(1 - var(--on));
-    --tone: color-mix(
-      in srgb,
-      var(--ink) calc(var(--on) * 100%),
-      var(--ink-muted)
-    );
+    --tone: var(--ink-muted);
 
     position: relative;
     display: flex;
     flex: 1 1 0;
     min-width: 0;
     overflow: hidden;
-    counter-set: week var(--week); /* 번호 표기용 카운터 */
+    counter-increment: week; /* 번호 표기용 카운터 */
     transition: flex-grow 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
 
     & + li {
       border-left: 1px solid var(--line);
+    }
+
+    /* 완료 주차 */
+    &.is-done {
+      --on: 1;
+      --tone: var(--ink);
     }
 
     /* 호버/키보드 포커스 시 옆으로 펼쳐짐 (예정 칸은 --on:0 이라 그대로) */
@@ -646,17 +754,6 @@ main {
       inset: 0 auto 0 0;
       width: calc(var(--off) * 100%);
       cursor: not-allowed;
-    }
-
-    /* 비어 있는 칸 (장식용 빈 선반) */
-    &.is-empty {
-      --on: 0;
-      --off: 0;
-      border-left-color: transparent;
-    }
-    /* 마지막 책 바로 옆 1칸만 선을 남겨 책장의 끝을 닫아줌 */
-    &:not(.is-empty) + .is-empty {
-      border-left-color: var(--line);
     }
   }
 }
@@ -683,7 +780,7 @@ main {
   }
 
   /* 상태에 따라 흐려지는 요소 */
-  & :is(.spine__no, .spine__title span, b) {
+  & :is(.spine__no, .spine__title span, .spine__state) {
     opacity: calc(1 - var(--off) * 0.3);
   }
 
@@ -720,56 +817,30 @@ main {
   & .spine__status {
     padding-top: var(--sp-sm);
     border-top: 1px solid var(--line);
-    & b {
-      display: block;
-      font: 400 10px/14px var(--font-mono);
-      font-weight: calc(400 + var(--on) * 300); /* 예정 400 → 완료 700 */
-      white-space: nowrap;
-      color: var(--tone);
-    }
-    & small {
-      display: block;
-      margin-top: 2px;
-      font: 400 9px/12px var(--font-mono);
-      color: var(--ink-muted);
-    }
   }
-}
-
-/* 성과 책장: 빈 칸 쪽 바깥 오른쪽 선도 숨김 */
-.shelf--plain .shelf__grid {
-  border-right-color: transparent;
+  & .spine__state {
+    display: block;
+    /* 예정 주차: "예정" 앞에 "NN주 " 자동 */
+    .is-todo &::before {
+      content: counter(week, decimal-leading-zero) '주 ';
+    }
+    font: 400 10px/14px var(--font-mono);
+    font-weight: calc(400 + var(--on) * 300); /* 예정 400 → 완료 700 */
+    white-space: nowrap;
+    color: var(--tone);
+  }
+  & .spine__tag {
+    display: block;
+    margin-top: 2px;
+    font: 400 9px/12px var(--font-mono);
+    color: var(--ink-muted);
+  }
 }
 
 /* 호버/포커스 중인 책등: 연한 회색 + 오른쪽 구분선 (펼쳐진 썸네일과 경계) */
 .shelf__grid > li:is(:hover, :focus-within) .spine {
   background: rgb(243 243 243 / var(--on));
   box-shadow: inset calc(var(--on) * -1px) 0 0 var(--line);
-}
-
-/* 15주 책장 전용: 완료/예정 문구 */
-.shelf--weeks .spine__status {
-  /* ::before = 완료일 때만 보임 / ::after = 예정일 때만 보임
-     (글자 크기를 0으로 만들어 숨김) */
-  & :is(b, small) {
-    &::before,
-    &::after {
-      display: block;
-      line-height: 1.4;
-    }
-    &::before {
-      font-size: calc(var(--on) * 1em);
-    }
-    &::after {
-      font-size: calc(var(--off) * 1em);
-    }
-  }
-  & b::before {
-    content: '완료';
-  }
-  & b::after {
-    content: counter(week, decimal-leading-zero) '주 예정';
-  }
 }
 
 /* ----- 호버 시 옆으로 펼쳐지는 썸네일 ----- */
@@ -808,7 +879,7 @@ main {
   transform: scale(1);
 }
 
-/* 링크 썸네일(15주 책장): href 가 있고 펼쳐진 상태에서만 클릭 가능 */
+/* 링크 썸네일: href 가 있고 펼쳐진 상태에서만 클릭 가능 */
 a[href].preview {
   cursor: pointer;
 }
@@ -829,6 +900,9 @@ a[href].preview {
 
   & .preview__meta {
     padding-left: 0;
+    &::before {
+      content: 'WEEK ' counter(week, decimal-leading-zero) ' · ';
+    }
     color: rgb(255 255 255 / 0.7);
     text-transform: uppercase;
   }
@@ -848,6 +922,9 @@ a[href].preview {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .shelf__grid > li,
   .preview {
     transition: none;
@@ -867,7 +944,6 @@ a[href].preview {
     & > li {
       display: block;
       overflow: visible;
-      &.is-empty,
       & .preview {
         display: none;
       }
@@ -907,7 +983,7 @@ a[href].preview {
 }
 
 /* =====================================================
-  Footer
+  [F-06] Footer
    ===================================================== */
 .site-footer {
   border-top: 1px solid var(--line);
