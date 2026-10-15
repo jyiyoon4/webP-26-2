@@ -133,7 +133,6 @@ main section {
 .caps {
   font: 600 11px/14px var(--font-sans);
   letter-spacing: 0.06em;
-  padding-left: 0.175rem;
 }
 .muted {
   color: var(--ink-muted);
@@ -323,12 +322,10 @@ main section {
     }
   }
   & .id-card__lead {
+    max-width: 26rem;
     font: 300 16px/26px var(--font-sans);
     word-break: keep-all;
     color: var(--on-ink-1);
-    @media (max-width: 683px) {
-      max-width: 26rem;
-    }
   }
   & .id-card__foot {
     padding-top: var(--sp-lg);
@@ -360,7 +357,7 @@ main section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: var(--sp-md);
+  padding-top: var(--sp-lg);
   border-top: 1px solid var(--line);
   @media (min-width: 1024px) {
     padding: 0 0 0 var(--sp-xl);
@@ -477,7 +474,7 @@ main section {
     white-space: nowrap;
   }
   & .ledger__role {
-    width: 9rem;
+    width: 13rem;
   }
   & td.ledger__role {
     color: var(--on-variant);
@@ -642,7 +639,7 @@ main section {
     border-color: var(--ink);
   }
   & .skill__no::before {
-    content: '[SKILL:' counter(skill, decimal-leading-zero) ']';
+    content: counter(skill, decimal-leading-zero);
   }
   & .skill__top {
     display: flex;
@@ -661,11 +658,14 @@ main section {
 
 /* =====================================================
   [F-05] 15주 책장
-    · 15칸 책장, 세로 책등, 호버 시 옆으로 펼쳐지는 썸네일
-    · 상태는 li 클래스로만 결정 (인라인 style 없음)
-        li.is-done : 완료  → --on: 1 (진한 글자, 펼쳐짐, 링크)
-        li.is-todo : 예정  → --on: 0 (흐린 글자, 안 펼쳐짐, 링크 없음)
-    · 주차 번호는 CSS 카운터로 자동 매김
+    · 15칸 책장, 세로 책등, 호버 시 옆으로 펼쳐지는 안내 패널
+    · 모든 주차는 같은 마크업(li > a.spine). 상태는 a 의 href 유무로 자동 결정
+        a[href]   : 완료 → --on: 1 (진한 글자, 클릭, 펼쳐짐)
+        a(href 없음) : 예정 → --on: 0 (흐린 글자, 클릭·호버 반응 없음)
+    · 아래 항목은 CSS 가 자동 생성 (HTML 에는 쓰지 않음)
+        책등 번호 01~15 · 예정 주차의 "NN주" · 펼침 패널의 큰 번호, "WEEK NN", "과제 페이지 보기 →"
+    · 칸 수를 바꾸려면 --slots 만 수정 (과제 요구는 15주)
+    · 주차를 마치는 방법은 index.html 의 [F-05] 주석 참고
    ===================================================== */
 
 /* 제목 옆에 범례가 다 들어가지 않으면 범례가 통째로 제목 아래로 내려감 */
@@ -720,47 +720,32 @@ main section {
 
   & > li {
     --spine-w: calc(var(--shelf-w) / var(--slots)); /* 책등(=접힌 칸) 폭 */
-    --on: 0;
-    --off: calc(1 - var(--on));
-    --tone: var(--ink-muted);
 
     position: relative;
     display: flex;
     flex: 1 1 0;
     min-width: 0;
     overflow: hidden;
-    counter-increment: week; /* 번호 표기용 카운터 */
+    counter-increment: week;
     transition: flex-grow 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+    pointer-events: none; /* 링크 없는 예정 칸은 호버에 반응하지 않음 (아래 a[href] 만 반응) */
 
     & + li {
       border-left: 1px solid var(--line);
     }
-
-    /* 완료 주차 */
-    &.is-done {
-      --on: 1;
-      --tone: var(--ink);
-    }
-
-    /* 호버/키보드 포커스 시 옆으로 펼쳐짐 (예정 칸은 --on:0 이라 그대로) */
+    /* 호버/키보드 포커스 시 옆으로 펼쳐짐 (a[href] 만 호버되므로 완료 주차만 해당) */
     &:is(:hover, :focus-within) {
-      flex-grow: calc(1 + var(--on) * (var(--grow) - 1));
-    }
-
-    /* 예정 주차 hover 차단 */
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: calc(var(--off) * 100%);
-      cursor: not-allowed;
+      flex-grow: var(--grow);
     }
   }
 }
 
-/* ----- 책등 ----- */
+/* ----- 책등 (a.spine) : 상태는 href 유무로 결정 ----- */
 .spine {
-  position: relative;
+  --on: 0; /* 1 = 완료(href 있음), 0 = 예정 */
+  --off: calc(1 - var(--on));
+  --tone: var(--ink-muted);
+
   z-index: 1;
   flex: 0 0 min(var(--spine-w), 100%); /* 펼쳐져도 책등 폭 유지, 눌린 이웃은 칸 폭만큼 */
   display: flex;
@@ -774,12 +759,17 @@ main section {
   background: rgb(243 243 243 / calc(var(--off) * 0.4));
   transition: background 0.22s ease;
 
+  &[href] {
+    --on: 1;
+    --tone: var(--ink);
+    pointer-events: auto;
+  }
   &:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: -2px;
   }
 
-  /* 상태에 따라 흐려지는 요소 */
+  /* 예정 주차는 전체가 살짝 흐려짐 */
   & :is(.spine__no, .spine__title span, .spine__state) {
     opacity: calc(1 - var(--off) * 0.3);
   }
@@ -820,10 +810,6 @@ main section {
   }
   & .spine__state {
     display: block;
-    /* 예정 주차: "예정" 앞에 "NN주 " 자동 */
-    .is-todo &::before {
-      content: counter(week, decimal-leading-zero) '주 ';
-    }
     font: 400 10px/14px var(--font-mono);
     font-weight: calc(400 + var(--on) * 300); /* 예정 400 → 완료 700 */
     white-space: nowrap;
@@ -837,88 +823,55 @@ main section {
   }
 }
 
-/* 호버/포커스 중인 책등: 연한 회색 + 오른쪽 구분선 (펼쳐진 썸네일과 경계) */
-.shelf__grid > li:is(:hover, :focus-within) .spine {
-  background: rgb(243 243 243 / var(--on));
-  box-shadow: inset calc(var(--on) * -1px) 0 0 var(--line);
+/* 예정 주차: "예정" 앞에 "NN주 " 자동 */
+.spine:not([href]) .spine__state::before {
+  content: counter(week, decimal-leading-zero) '주 ';
 }
 
-/* ----- 호버 시 옆으로 펼쳐지는 썸네일 ----- */
-.preview {
+/* 호버/포커스 중인 책등: 연한 회색 + 오른쪽 구분선 (펼쳐진 패널과 경계) */
+.shelf__grid > li:is(:hover, :focus-within) .spine {
+  background: var(--surface-low);
+  box-shadow: inset -1px 0 0 var(--line);
+}
+
+/* ----- 펼침 패널: 책등 오른쪽에 나타남 (a.spine 의 가상 요소라서 패널 어디를 눌러도 링크) ----- */
+.spine::before,
+.spine::after {
   position: absolute;
-  inset: 0 0 0 var(--spine-w);
-  overflow: hidden;
-  background: var(--ink); /* 썸네일 이미지가 없을 때 기본 배경 */
+  inset: 0 0 0 var(--spine-w); /* 책등 폭만큼 띄우고 칸 나머지를 채움 */
+  display: flex;
   opacity: 0;
   transform: scale(0.985);
-  pointer-events: none;
   transition:
     opacity 0.26s ease,
     transform 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
-
-  /* 이미지가 없을 때 보이는 큰 번호 (이미지가 있으면 가려짐) */
-  &::before {
-    content: counter(week, decimal-leading-zero);
-    position: absolute;
-    top: var(--sp-md);
-    right: var(--sp-lg);
-    font: 500 clamp(64px, 9vw, 120px) / 1 var(--font-sans);
-    letter-spacing: -0.06em;
-    color: rgb(255 255 255 / 0.08);
-  }
-  & img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 }
-.shelf__grid > li:is(:hover, :focus-within) .preview {
-  opacity: var(--on);
-  transform: scale(1);
+/* 바탕 + 큰 번호 */
+.spine::before {
+  content: counter(week, decimal-leading-zero);
+  justify-content: flex-end;
+  padding: var(--sp-md) var(--sp-lg);
+  background: var(--ink);
+  font: 500 clamp(64px, 9vw, 120px) / 1 var(--font-sans);
+  letter-spacing: -0.06em;
+  color: rgb(255 255 255 / 0.1);
 }
-
-/* 링크 썸네일: href 가 있고 펼쳐진 상태에서만 클릭 가능 */
-a[href].preview {
-  cursor: pointer;
-}
-.shelf__grid > li:is(:hover, :focus-within) a[href].preview {
-  pointer-events: auto;
-}
-
-.preview__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
+/* 하단 안내 문구 */
+.spine::after {
+  content: 'WEEK ' counter(week, decimal-leading-zero) '\A 과제 페이지 보기 →';
+  white-space: pre-line;
+  text-align: left;
   flex-direction: column;
   justify-content: flex-end;
-  gap: var(--sp-sm);
   padding: var(--sp-lg);
+  font: 500 clamp(18px, 2vw, 26px) / 1.4 var(--font-sans);
+  letter-spacing: -0.02em;
   color: var(--white);
-  background: linear-gradient(0deg, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0) 70%);
-
-  & .preview__meta {
-    padding-left: 0;
-    &::before {
-      content: 'WEEK ' counter(week, decimal-leading-zero) ' · ';
-    }
-    color: rgb(255 255 255 / 0.7);
-    text-transform: uppercase;
-  }
-  & .preview__title {
-    font: 700 clamp(20px, 2.2vw, 30px) / 1.2 var(--font-sans);
-    letter-spacing: -0.03em;
-    word-break: keep-all;
-    color: var(--white);
-  }
-  & .preview__desc {
-    max-width: 28rem;
-    font-size: 13px;
-    line-height: 20px;
-    word-break: keep-all;
-    color: rgb(255 255 255 / 0.8);
-  }
+}
+.shelf__grid > li:is(:hover, :focus-within) .spine::before,
+.shelf__grid > li:is(:hover, :focus-within) .spine::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -926,12 +879,13 @@ a[href].preview {
     scroll-behavior: auto;
   }
   .shelf__grid > li,
-  .preview {
+  .spine::before,
+  .spine::after {
     transition: none;
   }
 }
 
-/* 화면 폭이 좁아지면(768px 이하) 가로 행으로 층층이 쌓임 (썸네일 없음) */
+/* 화면 폭이 좁아지면(768px 이하) 가로 행으로 층층이 쌓임 (펼침 패널 없음) */
 @media (max-width: 768px) {
   .shelf {
     overflow-x: visible;
@@ -944,9 +898,6 @@ a[href].preview {
     & > li {
       display: block;
       overflow: visible;
-      & .preview {
-        display: none;
-      }
       & + li {
         border-left: 0;
         border-top: 1px solid var(--line);
@@ -961,6 +912,10 @@ a[href].preview {
     min-height: 72px;
     padding: var(--sp-md) var(--sp-sm);
     text-align: left;
+    &::before,
+    &::after {
+      display: none;
+    }
     & .spine__title {
       margin: 0;
       & span {

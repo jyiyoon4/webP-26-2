@@ -119,8 +119,9 @@
 
     <main>
       <!-- [F-03] 실적 목록: 표, 시기 역순(최신이 위)
-        추가: tbody 맨 위에 tr 한 줄만 넣으면 NO. 는 CSS 가 자동으로 매김
-        분류는 프로젝트 / 수상 / 자격 / 활동 / 교육 중 하나만 사용 -->
+        · 추가: tbody 의 시기 순서(최신 → 과거) 위치에 tr 한 줄 추가. NO. 는 CSS 가 자동으로 매김
+        · 시기는 YYYY.MM, time 의 datetime 은 같은 값을 YYYY-MM 으로
+        · 분류는 프로젝트 / 수상 / 자격 / 활동 / 교육 중 하나만 사용 -->
       <section class="section" id="achievements" aria-labelledby="ach-title">
         <div class="container">
           <div class="section-head section-head--strong">
@@ -147,11 +148,9 @@
                 <tr>
                   <td class="ledger__no"></td>
                   <td class="ledger__date">
-                    <time datetime="2026-10">2022.12</time>
+                    <time datetime="2022-12">2022.12</time>
                   </td>
-                  <td class="ledger__type">
-                    <span class="tag">동아리</span>
-                  </td>
+                  <td class="ledger__type"><span class="tag">활동</span></td>
                   <td>
                     <p class="ledger__title">Filosofia 문집 제작</p>
                     <p class="ledger__desc small">
@@ -165,10 +164,10 @@
                 <tr>
                   <td class="ledger__no"></td>
                   <td class="ledger__date">
-                    <time datetime="2026-03">2026.03</time>
+                    <time datetime="2026-03">2026.02</time>
                   </td>
                   <td class="ledger__type">
-                    <span class="tag">동아리 과제전</span>
+                    <span class="tag">프로젝트</span>
                   </td>
                   <td>
                     <p class="ledger__title">Digital Objet: Clock</p>
@@ -184,14 +183,14 @@
                 <tr>
                   <td class="ledger__no"></td>
                   <td class="ledger__date">
-                    <time datetime="2024-11">2026.3-7</time>
+                    <time datetime="2026-03">2026.03</time>
                   </td>
-                  <td class="ledger__type"><span class="tag">스터디</span></td>
+                  <td class="ledger__type"><span class="tag">교육</span></td>
                   <td>
-                    <p class="ledger__title">Html & Css 강의</p>
+                    <p class="ledger__title">React 스터디</p>
                     <p class="ledger__desc small">
-                      교내 행사 안내용 정적 웹사이트 마크업 총괄 및 동아리원
-                      대상 HTML/CSS 멘토링
+                      동아리 react 스터디 진행. 스터디 진행을 위한 선학습 및
+                      수업 자료를 정리하였다.
                     </p>
                   </td>
                   <td class="ledger__role">강의 진행자</td>
@@ -200,9 +199,11 @@
                 <tr>
                   <td class="ledger__no"></td>
                   <td class="ledger__date">
-                    <time datetime="2026-09">2026.05</time>
+                    <time datetime="2026-05">2026.05</time>
                   </td>
-                  <td class="ledger__type"><span class="tag">동아리</span></td>
+                  <td class="ledger__type">
+                    <span class="tag">프로젝트</span>
+                  </td>
                   <td>
                     <p class="ledger__title">
                       2026 축제 부스: 한누리관 탈출 게임
@@ -218,11 +219,11 @@
                 <tr>
                   <td class="ledger__no"></td>
                   <td class="ledger__date">
-                    <time datetime="2025-12">2026.10</time>
+                    <time datetime="2026-10">2026.10</time>
                   </td>
-                  <td class="ledger__type"><span class="tag">스터디</span></td>
+                  <td class="ledger__type"><span class="tag">교육</span></td>
                   <td>
-                    <p class="ledger__title">Html & Css 강의</p>
+                    <p class="ledger__title">Html &amp; Css 강의</p>
                     <p class="ledger__desc small">
                       동아리 신입 부원을 대상으로 html과 css의 기초 강의를
                       진행중이다.
@@ -236,17 +237,13 @@
         </div>
       </section>
 
-      <!-- [F-04] 수강 과목: 목록 -->
+      <!-- [F-04] 수강 과목: 목록 (이수 구분은 전공 / 교양 중 하나) -->
       <section class="section" id="courses" aria-labelledby="course-title">
         <div class="container">
           <div class="section-head">
             <div>
-              <span class="mono muted">[F-04] COURSE INDEX</span>
               <h2 class="h-lg" id="course-title">2026-2 COURSE DIRECTORY</h2>
             </div>
-            <span class="mono muted"
-              >SEMESTER REGISTRATION // DIRECTORY INDEX</span
-            >
           </div>
 
           <ul class="courses">
@@ -339,316 +336,224 @@
         </div>
       </section>
 
-      <!-- [F-05] 웹프로그래밍 15주 책장 (주차 번호·"NN주"·WEEK NN 은 CSS 자동)
-        · 완료: li.is-done + a.spine(href) + a.preview(같은 href), 상태 "완료"
-        · 예정: li.is-todo + div.spine (링크 없음), 상태 "예정"
-        · 주차를 마치면 is-todo 를 is-done 으로, div 를 a(href)로, "예정"을 "완료"로 바꾸고 preview 추가, 범례 숫자 수정 -->
+      <!-- [F-05] 웹프로그래밍 15주 책장 — 정확히 15개의 li, 1주 → 15주 순서, 모든 주차가 같은 모양
+        · 상태는 href 유무로 자동 결정: href 있음 = 완료(진한 색·클릭·펼쳐짐) / 없음 = 예정(흐린 색·클릭 불가)
+        · 번호(01~15), 예정의 "NN주", 펼침 화면 문구는 CSS 가 자동 생성
+        · 주차를 마치면 해당 li 에서 두 곳만 수정: ① a.spine 에 href="…" 추가 ② 상태 글자 "예정" → "완료" -->
       <section class="section" id="web-programming" aria-labelledby="web-title">
         <div class="container">
           <div class="section-head section-head--strong">
             <div>
-              <span class="mono muted">[F-05] WEEKLY PRACTICE</span>
               <h2 class="h-lg" id="web-title">
                 WEB PROGRAMMING: 15-WEEK SHELF
               </h2>
             </div>
             <p class="legend mono">
               <span class="legend__item"
-                ><span class="legend__swatch" aria-hidden="true"></span>01~05주
-                완료</span
+                ><span class="legend__swatch" aria-hidden="true"></span
+                >완료</span
               >
               <span class="legend__item legend__item--todo"
-                ><span class="legend__swatch" aria-hidden="true"></span>06~15주
-                예정</span
+                ><span class="legend__swatch" aria-hidden="true"></span
+                >예정</span
               >
             </p>
           </div>
 
           <div class="shelf">
             <ol class="shelf__grid" aria-label="웹프로그래밍 1~15주차 실습">
-              <li class="is-done">
-                <a class="spine" href="weeks/week-01.html">
+              <li>
+                <a class="spine" href="./index.html">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
-                    ><span
-                      >강의소개, Chapter 1. 인터넷과 웹 환경의 발전</span
-                    ></span
+                    ><span>Chapter 1. 인터넷과 웹 환경의 발전</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">완료</span
-                    ><span class="spine__tag">NET</span></span
+                    ><span class="spine__state">완료</span></span
                   >
                 </a>
-                <a
-                  class="preview"
-                  href="weeks/week-01.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <span class="preview__overlay">
-                    <span class="preview__meta mono">NET</span>
-                    <span class="preview__title"
-                      >강의소개, Chapter 1. 인터넷과 웹 환경의 발전</span
-                    >
-                    <span class="preview__desc">과제 페이지 보기 →</span>
+              </li>
+              <li>
+                <a class="spine" href="/w/doc02.html">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"
+                    ><span>Chapter 2. HTML5 문서 기본</span>
+                  </span>
+                  <span class="spine__status"
+                    ><span class="spine__state">완료</span>
                   </span>
                 </a>
               </li>
-              <li class="is-done">
-                <a class="spine" href="weeks/week-02.html">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>Chapter 2. HTML5 문서 기본</span></span
-                  >
-                  <span class="spine__status"
-                    ><span class="spine__state">완료</span
-                    ><span class="spine__tag">HTML</span></span
-                  >
-                </a>
-                <a
-                  class="preview"
-                  href="weeks/week-02.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <span class="preview__overlay">
-                    <span class="preview__meta mono">HTML</span>
-                    <span class="preview__title"
-                      >Chapter 2. HTML5 문서 기본</span
-                    >
-                    <span class="preview__desc">과제 페이지 보기 →</span>
-                  </span>
-                </a>
-              </li>
-              <li class="is-done">
-                <a class="spine" href="weeks/week-03.html">
+              <li>
+                <a class="spine" href="/w/doc03.html">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span>Chapter 3. 링크와 멀티미디어</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">완료</span
-                    ><span class="spine__tag">LNK</span></span
-                  >
-                </a>
-                <a
-                  class="preview"
-                  href="weeks/week-03.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <span class="preview__overlay">
-                    <span class="preview__meta mono">LNK</span>
-                    <span class="preview__title"
-                      >Chapter 3. 링크와 멀티미디어</span
-                    >
-                    <span class="preview__desc">과제 페이지 보기 →</span>
+                    ><span class="spine__state">완료</span>
                   </span>
                 </a>
               </li>
-              <li class="is-done">
-                <a class="spine" href="../../w/doc04.html">
+              <li>
+                <a class="spine">
+                  <span class="spine__no mono"></span>
+                  <span class="spine__title"><span>추석</span></span>
+                  <span class="spine__status"
+                    ><span class="spine__state">휴강</span>
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a class="spine" href="/w/doc05.html">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
-                    ><span>Chapter 4. CSS3 스타일시트 기초</span></span
+                    ><span>Chapter 4. CSS3 스타일시트 기초 </span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">완료</span
-                    ><span class="spine__tag">CSS</span></span
-                  >
-                </a>
-                <a
-                  class="preview"
-                  href="../../w/doc04.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <span class="preview__overlay">
-                    <span class="preview__meta mono">CSS</span>
-                    <span class="preview__title"
-                      >Chapter 4. CSS3 스타일시트 기초</span
-                    >
-                    <span class="preview__desc">과제 페이지 보기 →</span>
+                    ><span class="spine__state">완료</span>
                   </span>
                 </a>
               </li>
-              <li class="is-done">
-                <a class="spine" href="weeks/week-05.html">
+              <li>
+                <a class="spine" href="/w/doc06.html">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span>Chapter 5. 고급 표현을 위한 CSS3 활용</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">완료</span
-                    ><span class="spine__tag">ADV</span></span
-                  >
-                </a>
-                <a
-                  class="preview"
-                  href="weeks/week-05.html"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <span class="preview__overlay">
-                    <span class="preview__meta mono">ADV</span>
-                    <span class="preview__title"
-                      >Chapter 5. 고급 표현을 위한 CSS3 활용</span
-                    >
-                    <span class="preview__desc">과제 페이지 보기 →</span>
+                    ><span class="spine__state">완료</span>
                   </span>
                 </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
-                  <span class="spine__no mono"></span>
-                  <span class="spine__title"
-                    ><span>Chapter 6. 다양한 입력 폼</span></span
-                  >
-                  <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">FORM</span></span
-                  >
-                </div>
-              </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine" href="/w/doc07.html">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span
-                      >Chapter 7. HTML5와 CSS3를 이용한 웹사이트 제작 실습</span
+                      >Chapter 6. 다양한 입력 폼 <br />
+                      Chapter 7. HTML5와 CSS3를 이용한 웹사이트 제작 실습</span
                     ></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">WEB</span></span
-                  >
-                </div>
+                    ><span class="spine__state">완료</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"><span>중간고사</span></span>
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">MID</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span>Chapter 8. 자바스크립트 프로그래밍 기초</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">JS</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span>Chapter 9. 자바스크립트 객체와 DOM</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">DOM</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span>Chapter 10. 이벤트 처리와 동적 웹 문서</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">EVT</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span
-                      >Chapter 11. HTML5 캔버스 그리기 API, Chapter 12. HTML5
-                      인터페이스 관련 API</span
+                      >Chapter 11. HTML5 캔버스 그리기 API <br />
+                      Chapter 12. HTML5 인터페이스 관련 API</span
                     ></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">API</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span
-                      >Chapter 13. HTML5 저장 및 기타 API, Chapter 14. HTML5를
-                      이용한 모바일 웹 게임 제작 실습</span
+                      >Chapter 13. HTML5 저장 및 기타 API <br />
+                      Chapter 14. HTML5를 이용한 모바일 웹 게임 제작 실습</span
                     ></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">APP</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span>웹 서버 구축하기</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">SRV</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
-              <li class="is-todo">
-                <div class="spine">
+              <li>
+                <a class="spine">
                   <span class="spine__no mono"></span>
                   <span class="spine__title"
                     ><span>기말 프로젝트 발표</span></span
                   >
                   <span class="spine__status"
-                    ><span class="spine__state">예정</span
-                    ><span class="spine__tag">FIN</span></span
-                  >
-                </div>
+                    ><span class="spine__state">예정</span>
+                  </span>
+                </a>
               </li>
             </ol>
           </div>
         </div>
       </section>
 
-      <!-- [A-01] 추가 요구사항: 기술 스택 -->
+      <!-- [A-01] 추가 요구사항: 기술 스택 (번호는 CSS 자동) -->
       <section id="skills" aria-labelledby="skills-title">
         <div class="container">
           <div class="section-head">
             <div>
-              <span class="mono muted">[A-01] TOOLKIT</span>
               <h2 class="h-lg" id="skills-title">SKILLS &amp; TOOLS</h2>
             </div>
-            <span class="mono muted"
-              >FORMAT: SEMANTIC &lt;UL&gt; • CATALOG TAGS</span
-            >
           </div>
           <ul class="skills">
             <li class="skill">
               <div class="skill__top">
                 <span class="mono muted skill__no"></span>
-                <span class="mono">STD</span>
+                <span class="mono">분야?</span>
               </div>
               <div>
-                <h3 class="h-md">HTML5</h3>
+                <h3 class="h-md">HTML & CSS</h3>
                 <p class="small">
                   시맨틱 태그 구조화 및 접근성 명세 준수 마크업
                 </p>
@@ -657,10 +562,10 @@
             <li class="skill">
               <div class="skill__top">
                 <span class="mono muted skill__no"></span>
-                <span class="mono">CSS</span>
+                <span class="mono">분야?</span>
               </div>
               <div>
-                <h3 class="h-md">CSS3</h3>
+                <h3 class="h-md">JavaScript</h3>
                 <p class="small">
                   플렉스박스/그리드 레이아웃 및 반응형 타이포그래피
                 </p>
@@ -669,10 +574,10 @@
             <li class="skill">
               <div class="skill__top">
                 <span class="mono muted skill__no"></span>
-                <span class="mono">JS</span>
+                <span class="mono">분야?</span>
               </div>
               <div>
-                <h3 class="h-md">JavaScript (ES6+)</h3>
+                <h3 class="h-md">React</h3>
                 <p class="small">
                   DOM 조작, 이벤트 핸들링 및 모듈형 스크립트 작성
                 </p>
@@ -681,7 +586,7 @@
             <li class="skill">
               <div class="skill__top">
                 <span class="mono muted skill__no"></span>
-                <span class="mono">VCS</span>
+                <span class="mono">분야?</span>
               </div>
               <div>
                 <h3 class="h-md">Git &amp; GitHub</h3>
@@ -693,7 +598,7 @@
             <li class="skill">
               <div class="skill__top">
                 <span class="mono muted skill__no"></span>
-                <span class="mono">DES</span>
+                <span class="mono">분야?</span>
               </div>
               <div>
                 <h3 class="h-md">Figma</h3>
@@ -707,7 +612,7 @@
       </section>
     </main>
 
-    <!-- [F-06] 최종 수정일: 마지막 커밋 날짜와 같아야 함 (커밋 훅으로 자동 갱신 가능) -->
+    <!-- [F-06] 최종 수정일: 마지막 커밋 날짜와 같아야 함 -->
     <footer class="site-footer" id="colophon">
       <div class="container site-footer__inner">
         <div class="site-footer__col">
