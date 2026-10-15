@@ -609,10 +609,9 @@ main section {
 }
 
 /* =====================================================
-  [A-01] 스킬
+  [A-01] 스킬 — 이름 + 한 줄 설명 (분류명·번호 없음)
    ===================================================== */
 .skills {
-  counter-reset: skill; /* [SKILL:NN] 자동 번호 */
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--sp-md);
@@ -622,33 +621,14 @@ main section {
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
 }
 .skill {
-  counter-increment: skill;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* 제목·설명이 모든 카드에서 같은 높이에서 시작 */
-  padding: var(--sp-md);
+  padding: var(--sp-lg);
   background: var(--white);
   border: 1px solid var(--line);
   transition: border-color 0.2s;
   &:hover {
     border-color: var(--ink);
-  }
-  & .skill__no::before {
-    content: counter(skill, decimal-leading-zero);
-  }
-  & .skill__top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--sp-md);
-    & span:last-child {
-      font-size: 10px;
-      color: var(--ink);
-    }
   }
   & p {
     margin-top: 4px;
