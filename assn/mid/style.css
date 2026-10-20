@@ -1,3 +1,7 @@
+/* =====================================================
+  YOON's WORK LIBRARY — style.css
+  · CSS Nesting 사용 / 모든 표현은 이 파일에서만 정의 (HTML 에 인라인 style 없음)
+===================================================== */
 :root {
   /* color */
   --line: #e5e5e5;
@@ -113,7 +117,7 @@ main section {
 
 /* =====================================================
   Helpers
-   ===================================================== */
+===================================================== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -172,9 +176,7 @@ main section {
   margin-bottom: var(--sp-lg);
   padding-bottom: var(--sp-sm);
   border-bottom: 1px solid var(--line);
-  & .mono {
-    display: block;
-  }
+
   &.section-head--strong {
     border-bottom-color: var(--ink);
   }
@@ -187,7 +189,7 @@ main section {
 
 /* =====================================================
   Header (페이지 상단: 고정 바 + 소개 카드)
-   ===================================================== */
+===================================================== */
 .page-header {
   padding-top: var(--bar-h); /* 고정 바 높이만큼 소개 카드를 내림 */
   background: var(--bg);
@@ -264,7 +266,7 @@ main section {
 
 /* =====================================================
   Intro
-   ===================================================== */
+===================================================== */
 .intro {
   display: grid;
   gap: var(--sp-xl);
@@ -412,7 +414,7 @@ main section {
   [F-03] 실적 대장 (table)
     · 책장과 같은 흰 바탕 + 가는 선, 머리행 아래 검은 굵은 선
     · 좁은 화면에서는 표 자체가 가로 스크롤 (페이지는 스크롤 X)
-   ===================================================== */
+===================================================== */
 .ledger {
   background: var(--white);
   border: 1px solid var(--line);
@@ -505,7 +507,7 @@ main section {
 
 /* =====================================================
   [F-04] 강의
-   ===================================================== */
+===================================================== */
 .courses {
   display: grid;
   grid-template-columns: 1fr;
@@ -610,7 +612,7 @@ main section {
 
 /* =====================================================
   [A-01] 스킬 — 이름 + 한 줄 설명 (분류명·번호 없음)
-   ===================================================== */
+===================================================== */
 .skills {
   display: grid;
   grid-template-columns: 1fr;
@@ -640,13 +642,13 @@ main section {
   [F-05] 15주 책장
     · 15칸 책장, 세로 책등, 호버 시 옆으로 펼쳐지는 안내 패널
     · 모든 주차는 같은 마크업(li > a.spine). 상태는 a 의 href 유무로 자동 결정
-        a[href]   : 완료 → --on: 1 (진한 글자, 클릭, 펼쳐짐)
-        a(href 없음) : 예정 → --on: 0 (흐린 글자, 클릭·호버 반응 없음)
+        a[href]      : 완료 → --on: 1 (진한 글자, 클릭, 펼쳐짐)
+        a(href 없음) : 예정/휴강/OT → --on: 0 (흐린 글자, 클릭·호버 반응 없음)
     · 아래 항목은 CSS 가 자동 생성 (HTML 에는 쓰지 않음)
-        책등 번호 01~15 · 예정 주차의 "NN주" · 펼침 패널의 큰 번호, "WEEK NN", "과제 페이지 보기 →"
+        책등 번호 01~15 · href 없는 주차의 "NN주" · 펼침 패널의 큰 번호, "WEEK NN", "과제 페이지 보기 →"
     · 칸 수를 바꾸려면 --slots 만 수정 (과제 요구는 15주)
     · 주차를 마치는 방법은 index.html 의 [F-05] 주석 참고
-   ===================================================== */
+===================================================== */
 
 /* 제목 옆에 범례가 다 들어가지 않으면 범례가 통째로 제목 아래로 내려감 */
 #web-programming .section-head {
@@ -708,7 +710,7 @@ main section {
     overflow: hidden;
     counter-increment: week;
     transition: flex-grow 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
-    pointer-events: none; /* 링크 없는 예정 칸은 호버에 반응하지 않음 (아래 a[href] 만 반응) */
+    pointer-events: none; /* 링크 없는 칸은 호버에 반응하지 않음 (아래 a[href] 만 반응) */
 
     & + li {
       border-left: 1px solid var(--line);
@@ -722,7 +724,7 @@ main section {
 
 /* ----- 책등 (a.spine) : 상태는 href 유무로 결정 ----- */
 .spine {
-  --on: 0; /* 1 = 완료(href 있음), 0 = 예정 */
+  --on: 0; /* 1 = 완료(href 있음), 0 = 링크 없음 */
   --off: calc(1 - var(--on));
   --tone: var(--ink-muted);
 
@@ -749,7 +751,7 @@ main section {
     outline-offset: -2px;
   }
 
-  /* 예정 주차는 전체가 살짝 흐려짐 */
+  /* 링크 없는 주차는 전체가 살짝 흐려짐 */
   & :is(.spine__no, .spine__title span, .spine__state) {
     opacity: calc(1 - var(--off) * 0.3);
   }
@@ -781,7 +783,7 @@ main section {
         500 12px/14px var(--font-mono),
         var(--font-sans);
       letter-spacing: 0.1em;
-      font-weight: calc(400 + var(--on) * 100); /* 예정 400 → 완료 500 */
+      font-weight: calc(400 + var(--on) * 100); /* 링크 없음 400 → 완료 500 */
     }
   }
   & .spine__status {
@@ -791,19 +793,13 @@ main section {
   & .spine__state {
     display: block;
     font: 400 10px/14px var(--font-mono);
-    font-weight: calc(400 + var(--on) * 300); /* 예정 400 → 완료 700 */
+    font-weight: calc(400 + var(--on) * 300); /* 링크 없음 400 → 완료 700 */
     white-space: nowrap;
     color: var(--tone);
   }
-  & .spine__tag {
-    display: block;
-    margin-top: 2px;
-    font: 400 9px/12px var(--font-mono);
-    color: var(--ink-muted);
-  }
 }
 
-/* 예정 주차: "예정" 앞에 "NN주 " 자동 */
+/* 링크 없는 주차: 상태 글자 앞에 "NN주 " 자동 */
 .spine:not([href]) .spine__state::before {
   content: counter(week, decimal-leading-zero) '주 ';
 }
@@ -919,7 +915,7 @@ main section {
 
 /* =====================================================
   [F-06] Footer
-   ===================================================== */
+===================================================== */
 .site-footer {
   border-top: 1px solid var(--line);
   background: var(--bg);
