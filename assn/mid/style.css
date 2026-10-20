@@ -176,7 +176,6 @@ main section {
   margin-bottom: var(--sp-lg);
   padding-bottom: var(--sp-sm);
   border-bottom: 1px solid var(--line);
-
   &.section-head--strong {
     border-bottom-color: var(--ink);
   }
@@ -260,6 +259,11 @@ main section {
     &:focus-visible {
       outline: 2px solid var(--ink);
       outline-offset: 2px;
+    }
+    & svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
     }
   }
 }
